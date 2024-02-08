@@ -1,0 +1,112 @@
+[
+    {
+      "user_id": 20230001,
+      "first_name": "Mike",
+      "last_name": "Bahringer",
+      "email": "hessel.carmen@example.com",
+      "password": "3109c804fe9362a600dbca9defdf5b9174068d9f",
+      "mobile_number": "09139264356",
+      "user_type": "SUPER_ADMIN",
+      "is_active": 0,
+      "is_validated": 0      
+    },
+    {
+      "user_id": 20230002,
+      "first_name": "Augusta",
+      "last_name": "Kessler",
+      "email": "wharvey@example.com",
+      "password": "c66ece56df061de0bc3a8488233b6de5ed93bb4c",
+      "mobile_number": "09947426969",
+      "user_type": "ADMIN",
+      "is_active": 0,
+      "is_validated": 1      
+    },
+    {
+      "user_id": 20230003,
+      "first_name": "Jeff",
+      "last_name": "Kuhn",
+      "email": "harry51@example.com",
+      "password": "231ac4f50e5740d502ff62bafeca631e1011ed59",
+      "mobile_number": "09659340453",
+      "user_type": "TENANT",
+      "is_active": 1,
+      "is_validated": 1      
+    },
+    {
+      "user_id": 20230004,
+      "first_name": "Kobe",
+      "last_name": "Bosco",
+      "email": "goyette.delores@example.net",
+      "password": "fa6dba1cdbb52bfc699d13805b462dc11c51bfc3",
+      "mobile_number": "09505455843",
+      "user_type": "TENANT",
+      "is_active": 0,
+      "is_validated": 1      
+    },
+    {
+      "user_id": 20230005,
+      "first_name": "Yadira",
+      "last_name": "Langosh",
+      "email": "judy43@example.net",
+      "password": "3ad60549c658de407d05f3b990808112369093e3",
+      "mobile_number": "09944633395",
+      "user_type": "TENANT",
+      "is_active": 1,
+      "is_validated": 1      
+    },
+    {
+      "user_id": 20230006,
+      "first_name": "Bernie",
+      "last_name": "Corwin",
+      "email": "acorkery@example.org",
+      "password": "c4e2dfc7c8b42ab14ddadb7a7f5fbc87aa32019e",
+      "mobile_number": "09823388719",
+      "user_type": "TENANT",
+      "is_active": 1,
+      "is_validated": 0      
+    },
+    {
+      "user_id": 20230007,
+      "first_name": "Lula",
+      "last_name": "Orn",
+      "email": "percival.turcotte@example.net",
+      "password": "5a02a2d739c4843af16b701abab96f61ea6600ee",
+      "mobile_number": "09380996056",
+      "user_type": "OWNER",
+      "is_active": 1,
+      "is_validated": 0      
+    },
+    {
+      "user_id": 20230008,
+      "first_name": "Emmanuel",
+      "last_name": "Ratke",
+      "email": "ahickle@example.com",
+      "password": "b391d5ab0985d66459f19693c05ab1fa6cf61dbe",
+      "mobile_number": "09813118461",
+      "user_type": "OWNER",
+      "is_active": 1,
+      "is_validated": 0      
+    },
+    {
+      "user_id": 20230009,
+      "first_name": "Brooks",
+      "last_name": "Rolfson",
+      "email": "hcollins@example.net",
+      "password": "3ebfda0a8286d513ceca9928c6bdec5bcd638932",
+      "mobile_number": "09262528781",
+      "user_type": "OWNER",
+      "is_active": 1,
+      "is_validated": 1
+    },
+    {
+      "user_id": 20230010,
+      "first_name": "Enola",
+      "last_name": "Weimann",
+      "email": "ernestina.mraz@example.org",
+      "password": "6472cdf71e4cec6f7a07f07b7f2604851256c582",
+      "mobile_number": "09549918740",
+      "user_type": "OWNER",
+      "is_active": 1,
+      "is_validated": 1
+    }
+  ]

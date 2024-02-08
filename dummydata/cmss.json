@@ -1,0 +1,142 @@
+[
+    {
+      "cms_id": 5000,
+      "user_id": 20230006,
+      "title": "In non eius tenetur.",
+      "description": "In exercitationem repellendus ipsa quisquam quia suscipit. Magni nostrum eius veritatis ullam sed nisi sunt. Itaque aut nostrum amet minus dolorem amet qui consectetur.",
+      "cms_type": "ANNOUNCEMENT"      
+    },
+    {
+      "cms_id": 5001,
+      "user_id": 20230007,
+      "title": "Minus id ut quo est.",
+      "description": "Voluptas animi cumque animi id et quia. Ut iusto laborum ut quisquam. Debitis autem quae sapiente consequatur ipsum quod.",
+      "cms_type": "NEWS"      
+    },
+    {
+      "cms_id": 5002,
+      "user_id": 20230005,
+      "title": "Voluptates id cumque et accusamus quod tenetur iste.",
+      "description": "Labore et consectetur consequatur molestiae eos eos. Ipsa tenetur repellendus id laudantium. Culpa voluptatem facilis consequatur deserunt quis eaque. Totam voluptatem optio dolorem sit magnam quo autem.",
+      "cms_type": "EVENT"      
+    },
+    {
+      "cms_id": 5003,
+      "user_id": 20230007,
+      "title": "Tempore ab accusamus eum assumenda officiis autem.",
+      "description": "Nesciunt consequatur repellat ad nostrum voluptas porro. Impedit ratione autem fuga omnis nulla.",
+      "cms_type": "NEWS"      
+    },
+    {
+      "cms_id": 5004,
+      "user_id": 20230006,
+      "title": "Aut inventore qui sit ratione.",
+      "description": "Rerum aut accusamus repudiandae est. Necessitatibus architecto a quaerat et. Expedita laudantium porro labore rem rerum distinctio.",
+      "cms_type": "COMPLAINT"      
+    },
+    {
+      "cms_id": 5005,
+      "user_id": 20230009,
+      "title": "Dolorem veniam qui quo.",
+      "description": "Ipsum rerum est debitis eum ut. Tempore velit et pariatur voluptatem rerum ut numquam. Quaerat explicabo dolores voluptatem odio rerum.",
+      "cms_type": "NEWS"      
+    },
+    {
+      "cms_id": 5006,
+      "user_id": 20230001,
+      "title": "Doloribus repellat perferendis et dicta consectetur.",
+      "description": "Est dolores consequatur laboriosam ipsum a deserunt. Modi est nulla ullam est officiis quas. Sed tempore hic quis est et adipisci. Soluta laudantium deserunt ipsum est ut. Perferendis et architecto dolorem.",
+      "cms_type": "COMPLAINT"      
+    },
+    {
+      "cms_id": 5007,
+      "user_id": 20230003,
+      "title": "Earum ut eos quidem ut.",
+      "description": "Sit nam similique rerum possimus. Saepe omnis explicabo optio omnis adipisci consequatur non. Repellendus id aut nam tempora ratione. Molestiae aperiam et sed provident odio debitis similique.",
+      "cms_type": "FEEDBACK"      
+    },
+    {
+      "cms_id": 5008,
+      "user_id": 20230010,
+      "title": "Quia eligendi sequi dolores blanditiis voluptatem eaque.",
+      "description": "Perferendis dolore deleniti et vel neque earum. Quasi tempore provident dolores ipsa doloribus et culpa. Corporis laborum repudiandae quis beatae doloremque qui dolores vel.",
+      "cms_type": "FEEDBACK"      
+    },
+    {
+      "cms_id": 5009,
+      "user_id": 20230010,
+      "title": "Mollitia vel cumque rem aspernatur quam.",
+      "description": "Aspernatur corrupti nisi vel libero. Unde odit dolores tempora quia. Laboriosam nulla beatae quia esse natus saepe. Dolore fuga quod nobis occaecati autem ut sunt quam.",
+      "cms_type": "RESERVATION"      
+    },
+    {
+      "cms_id": 5010,
+      "user_id": 20230008,
+      "title": "Et tempore necessitatibus et dolores sunt dolore eligendi.",
+      "description": "Reprehenderit et et impedit porro eaque omnis natus qui. Adipisci suscipit consequatur ipsam eligendi earum qui maxime. Vel rerum culpa neque quisquam soluta. Dolorem laboriosam quibusdam et natus blanditiis id consectetur.",
+      "cms_type": "MAINTENANCE"      
+    },
+    {
+      "cms_id": 5011,
+      "user_id": 20230004,
+      "title": "In aperiam non saepe numquam totam voluptas aperiam.",
+      "description": "Deserunt in quia aut id animi distinctio temporibus. Fugit quasi odio et saepe sunt eos. Cumque exercitationem error ab harum qui autem similique et.",
+      "cms_type": "FEEDBACK"      
+    },
+    {
+      "cms_id": 5012,
+      "user_id": 20230008,
+      "title": "Adipisci sunt eius mollitia voluptates cupiditate occaecati ipsam tempore.",
+      "description": "Ipsam repellat repellat deserunt omnis. In maxime ad molestiae et quos sit et. Voluptatum tempore et tempore voluptate ratione aut doloremque. Voluptates minima sapiente esse accusamus dicta.",
+      "cms_type": "ANNOUNCEMENT"      
+    },
+    {
+      "cms_id": 5013,
+      "user_id": 20230009,
+      "title": "Quia exercitationem consequatur est ut maiores.",
+      "description": "Et nobis sunt eligendi ratione ut eius et. Perferendis omnis totam optio saepe natus qui. Sunt ea perferendis facilis nihil in. Culpa et ea quo inventore quos.",
+      "cms_type": "MAINTENANCE"      
+    },
+    {
+      "cms_id": 5014,
+      "user_id": 20230003,
+      "title": "Qui iure amet voluptatem id.",
+      "description": "Doloribus vero eum quaerat non. Pariatur qui dolorem delectus minima similique veritatis.",
+      "cms_type": "COMPLAINT"      
+    },
+    {
+      "cms_id": 5015,
+      "user_id": 20230005,
+      "title": "At iusto nostrum blanditiis ut asperiores.",
+      "description": "Odit et rem architecto error. Quo vel numquam voluptatem laborum nisi at est. Iure suscipit ratione error et nemo.",
+      "cms_type": "RESERVATION"      
+    },
+    {
+      "cms_id": 5017,
+      "user_id": 20230004,
+      "title": "Officia omnis in ut consectetur et dolorem deleniti.",
+      "description": "Iusto dolores et consequatur rerum eius est. Et placeat omnis omnis dolorem. Recusandae pariatur ut dolor. Id architecto velit cum labore est.",
+      "cms_type": "NEWS"      
+    },
+    {
+      "cms_id": 5018,
+      "user_id": 20230001,
+      "title": "Aut ducimus sit tempore adipisci beatae officia.",
+      "description": "Consequatur ex distinctio occaecati quos praesentium occaecati. Asperiores sed nobis et nulla aliquam perspiciatis. Et est dolorem quis culpa ab dolorem est. Voluptates molestiae blanditiis qui ducimus.",
+      "cms_type": "COMPLAINT"      
+    },
+    {
+      "cms_id": 5019,
+      "user_id": 20230002,
+      "title": "Quis et voluptate quae quam et quasi.",
+      "description": "Distinctio eum enim quo et. Est amet ex ut culpa vel natus ratione voluptas. Eum alias ratione et odio qui.",
+      "cms_type": "ANNOUNCEMENT"      
+    },
+    {
+      "cms_id": 5020,
+      "user_id": 20230002,
+      "title": "Molestias deserunt est temporibus ut.",
+      "description": "Sint provident et nemo asperiores in ratione minima. Fuga et autem commodi sequi. Saepe sed numquam debitis ut impedit eligendi et minus.",
+      "cms_type": "EVENT"      
+    }
+  ]
