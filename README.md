@@ -23,4 +23,4 @@ SQLAlchemy\
 sqlalchemy_utils\
 \
 avidatrack\
-password\
+password

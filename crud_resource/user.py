@@ -5,9 +5,9 @@ from sqlalchemy.exc import IntegrityError
 
 class UserResource(Resource):
     # Get Data
-    def get(self, user_id=None):
-        if user_id:
-            user = User.query.get(user_id)
+    def get(self, email=None):
+        if email:
+            user = User.query.filter(User.email == email).first()
             if user:
                 return {
                     'user_id': user.user_id,
