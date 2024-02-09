@@ -1,8 +1,8 @@
 """Initial Migration
 
-Revision ID: 2ee72b2d84e4
+Revision ID: 0dbdd6a52a04
 Revises: 
-Create Date: 2024-02-04 00:57:02.257674
+Create Date: 2024-02-10 05:43:57.531747
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '2ee72b2d84e4'
+revision = '0dbdd6a52a04'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -25,7 +25,7 @@ def upgrade():
     sa.Column('email', sa.String(length=120), nullable=False),
     sa.Column('password', sa.String(length=255), nullable=True),
     sa.Column('mobile_number', sa.String(length=20), nullable=False),
-    sa.Column('user_type', sa.Enum('SUPER_ADMIN', 'ADMIN', 'OWNER', 'TENANT', name='user_type'), nullable=False),
+    sa.Column('user_type', sa.Enum('SUPER_ADMIN', 'ADMIN', 'OWNER', 'TENANT', 'GUEST', name='user_type'), nullable=False),
     sa.Column('is_active', sa.Boolean(), nullable=True),
     sa.Column('is_validated', sa.Boolean(), nullable=True),
     sa.PrimaryKeyConstraint('user_id'),
@@ -43,20 +43,20 @@ def upgrade():
     op.create_table('tenants',
     sa.Column('tenant_id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('move_in_date', sa.DateTime(), nullable=False),
+    sa.Column('move_in_date', sa.DateTime(), nullable=True),
     sa.Column('move_out_date', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.user_id'], ),
     sa.PrimaryKeyConstraint('tenant_id')
     )
     op.create_table('units',
     sa.Column('unit_id', sa.Integer(), autoincrement=True, nullable=False),
-    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('tower_number', sa.Integer(), nullable=False),
     sa.Column('floor_number', sa.Integer(), nullable=False),
     sa.Column('unit_number', sa.Integer(), nullable=False),
-    sa.Column('sq_foot', sa.Integer(), nullable=False),
-    sa.Column('number_of_bedrooms', sa.Integer(), nullable=False),
-    sa.Column('number_of_bathrooms', sa.Integer(), nullable=False),
+    sa.Column('sq_foot', sa.Integer(), nullable=True),
+    sa.Column('number_of_bedrooms', sa.Integer(), nullable=True),
+    sa.Column('number_of_bathrooms', sa.Integer(), nullable=True),
     sa.Column('parking_slot', sa.String(length=20), nullable=True),
     sa.Column('remaining_balance', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.user_id'], ),
@@ -65,11 +65,13 @@ def upgrade():
     op.create_table('bills',
     sa.Column('bill_id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('unit_id', sa.Integer(), nullable=False),
-    sa.Column('month', sa.Enum('JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JuLY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER', name='month'), nullable=False),
+    sa.Column('month', sa.Enum('JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER', name='month'), nullable=False),
     sa.Column('year', sa.Integer(), nullable=False),
     sa.Column('due_date', sa.DateTime(), nullable=False),
     sa.Column('total_amount', sa.Integer(), nullable=False),
     sa.Column('breakdown', sa.Text(), nullable=True),
+    sa.Column('bill_type', sa.Enum('UTILITY', 'ASSOCIATION', 'PARKING', 'MAINTENANCE', 'INTERNETCABLE', 'ETC', name='bill_type'), nullable=False),
+    sa.Column('payment_method', sa.String(length=50), nullable=True),
     sa.Column('status', sa.Enum('PENDING', 'REVIEW', 'PAID', name='status'), nullable=True),
     sa.CheckConstraint('bills.year >= 1500', name='check_positive_year'),
     sa.ForeignKeyConstraint(['unit_id'], ['units.unit_id'], ),
@@ -83,7 +85,7 @@ def upgrade():
     sa.Column('start_date', sa.DateTime(), nullable=False),
     sa.Column('end_date', sa.DateTime(), nullable=False),
     sa.Column('monthly_rent', sa.Integer(), nullable=False),
-    sa.Column('security_deposit', sa.Integer(), nullable=False),
+    sa.Column('security_deposit', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['owner_id'], ['users.user_id'], ),
     sa.ForeignKeyConstraint(['tenant_id'], ['tenants.tenant_id'], ),
     sa.ForeignKeyConstraint(['unit_id'], ['units.unit_id'], ),
@@ -95,7 +97,7 @@ def upgrade():
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('payment_date', sa.DateTime(), nullable=False),
     sa.Column('amount', sa.Integer(), nullable=False),
-    sa.Column('payment_method', sa.String(length=50), nullable=False),
+    sa.Column('payment_method', sa.String(length=50), nullable=True),
     sa.Column('reference_number', sa.String(length=50), nullable=True),
     sa.Column('image_path', sa.String(length=255), nullable=True),
     sa.Column('status', sa.Enum('PENDING', 'REVIEW', 'PAID', name='status'), nullable=True),

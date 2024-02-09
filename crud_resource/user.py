@@ -21,7 +21,7 @@ class UserResource(Resource):
                     'is_validated': user.is_validated
                 }
             else:
-                return {'message': 'User not found'}, 404
+                return {'message': 'User not found'}, 308
         else:
             users = User.query.all()
             # users = User.filter_by(username=args['username']).all()
@@ -47,15 +47,19 @@ class UserResource(Resource):
             if existing_user:
                 return {'error': 'User with this email already exists'}, 409
 
-            # Check if user_type is valid
-            valid_user_types = ['SUPER_ADMIN', 'ADMIN', 'OWNER', 'TENANT']
-            if data['user_type'] not in valid_user_types:
-                return {'error': 'Invalid user type'}, 400
-
             new_user = User(**data)
             db.session.add(new_user)
             db.session.commit()
-            return {'message': 'User created successfully'}, 201
+            
+           # Refresh the new_user object to get the auto-incremented user_id
+            db.session.refresh(new_user)
+
+            # Return the user_id in the response
+            response_data = {
+                'message': 'User created successfully',
+                'user_id': new_user.user_id  # Assuming 'user_id' is the actual attribute name
+            }
+            return response_data, 201
         except IntegrityError as e:
             db.session.rollback()  # Rollback the transaction
             print(f"Error creating user: {str(e)}")

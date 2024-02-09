@@ -1,6 +1,6 @@
 import enum
-
-class Cms_Enum(enum.Enum):
+from sqlalchemy import Enum
+class Cms_Enum(enum.IntEnum):
     ANNOUNCEMENT = 1
     NEWS = 2
     EVENT = 3
@@ -9,13 +9,14 @@ class Cms_Enum(enum.Enum):
     FEEDBACK = 6
     COMPLAINT = 7
 
-class user_type(enum.Enum):
+class user_type(enum.IntEnum):
     SUPER_ADMIN = 1
     ADMIN = 2
     OWNER = 3
     TENANT = 4
+    GUEST = 5
 
-class month(enum.Enum):
+class month(enum.IntEnum):
     JANUARY = 1
     FEBRUARY = 2
     MARCH = 3
@@ -29,12 +30,12 @@ class month(enum.Enum):
     NOVEMBER = 11
     DECEMBER = 12
 
-class status(enum.Enum):
+class status(enum.IntEnum):
     PENDING = 1
     REVIEW = 2
     PAID = 3
 
-class bill_type(enum.Enum):
+class bill_type(enum.IntEnum):
     UTILITY = 1
     ASSOCIATION = 2
     PARKING = 3

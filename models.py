@@ -29,7 +29,7 @@ class Unit(db.Model):
     number_of_bedrooms = db.Column(db.Integer, nullable=True)
     number_of_bathrooms = db.Column(db.Integer, nullable=True)
     parking_slot = db.Column(db.String(20), nullable=True)
-    remaining_balance = db.Column(db.Integer, nullable=False)
+    remaining_balance = db.Column(db.Integer, nullable=True)
 
 
 class Tenant(db.Model):
@@ -84,7 +84,7 @@ class Bill(db.Model):
     due_date = db.Column(db.DateTime, nullable=False)
     total_amount = db.Column(db.Integer, nullable=False)
     breakdown = db.Column(db.Text, nullable=True)
-    bill_type = db.Column(db.Enum(bill_type), nullable=False)
+    bill_type = db.Column(db.Enum(bill_type), nullable=True)
     payment_method = db.Column(db.String(50), nullable=True)
     status = db.Column(db.Enum(status), default=status.PENDING)
 
