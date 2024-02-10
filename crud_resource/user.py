@@ -21,7 +21,9 @@ class UserResource(Resource):
                     'is_validated': user.is_validated
                 }
             else:
-                return {'message': 'User not found'}, 308
+                return {
+                    'message': 'User not found'
+                }
         else:
             users = User.query.all()
             # users = User.filter_by(username=args['username']).all()
