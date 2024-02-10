@@ -1,4 +1,4 @@
-from creation import app, db, User
+from creation import db, User
 from flask_restful import Resource
 from flask import request
 from sqlalchemy.exc import IntegrityError
