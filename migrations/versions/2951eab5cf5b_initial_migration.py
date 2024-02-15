@@ -1,8 +1,8 @@
 """Initial Migration
 
-Revision ID: 0dbdd6a52a04
+Revision ID: 2951eab5cf5b
 Revises: 
-Create Date: 2024-02-10 05:43:57.531747
+Create Date: 2024-02-15 17:54:58.579223
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '0dbdd6a52a04'
+revision = '2951eab5cf5b'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -58,7 +58,7 @@ def upgrade():
     sa.Column('number_of_bedrooms', sa.Integer(), nullable=True),
     sa.Column('number_of_bathrooms', sa.Integer(), nullable=True),
     sa.Column('parking_slot', sa.String(length=20), nullable=True),
-    sa.Column('remaining_balance', sa.Integer(), nullable=False),
+    sa.Column('remaining_balance', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.user_id'], ),
     sa.PrimaryKeyConstraint('unit_id')
     )
@@ -70,7 +70,7 @@ def upgrade():
     sa.Column('due_date', sa.DateTime(), nullable=False),
     sa.Column('total_amount', sa.Integer(), nullable=False),
     sa.Column('breakdown', sa.Text(), nullable=True),
-    sa.Column('bill_type', sa.Enum('UTILITY', 'ASSOCIATION', 'PARKING', 'MAINTENANCE', 'INTERNETCABLE', 'ETC', name='bill_type'), nullable=False),
+    sa.Column('bill_type', sa.Enum('UTILITY', 'ASSOCIATION', 'PARKING', 'MAINTENANCE', 'INTERNETCABLE', 'ETC', name='bill_type'), nullable=True),
     sa.Column('payment_method', sa.String(length=50), nullable=True),
     sa.Column('status', sa.Enum('PENDING', 'REVIEW', 'PAID', name='status'), nullable=True),
     sa.CheckConstraint('bills.year >= 1500', name='check_positive_year'),
