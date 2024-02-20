@@ -1,0 +1,92 @@
+[
+	{
+		"module_id": 1,
+		"module_name": "Bulletin Board",
+		"super_admin": 0,
+		"admin": 1,
+		"owner": 1,
+		"tenant": 1,
+		"guest": 1
+	},
+	{
+		"module_id": 2,
+		"module_name": "Manage Users",
+		"super_admin": 0,
+		"admin": 1,
+		"owner": 0,
+		"tenant": 0,
+		"guest": 0
+	},
+	{
+		"module_id": 3,
+		"module_name": "Access Control",
+		"super_admin": 1,
+		"admin": 0,
+		"owner": 0,
+		"tenant": 0,
+		"guest": 0
+	},
+	{
+		"module_id": 4,
+		"module_name": "Tenant Lease",
+		"super_admin": 0,
+		"admin": 0,
+		"owner": 0,
+		"tenant": 1,
+		"guest": 0
+	},
+	{
+		"module_id": 5,
+		"module_name": "History and Invoice",
+		"super_admin": 0,
+		"admin": 0,
+		"owner": 1,
+		"tenant": 1,
+		"guest": 0
+	},
+	{
+		"module_id": 6,
+		"module_name": "Validation",
+		"super_admin": 0,
+		"admin": 0,
+		"owner": 1,
+		"tenant": 1,
+		"guest": 0
+	},
+	{
+		"module_id": 7,
+		"module_name": "Feedback and Complaint",
+		"super_admin": 0,
+		"admin": 0,
+		"owner": 1,
+		"tenant": 1,
+		"guest": 0
+	},
+	{
+		"module_id": 8,
+		"module_name": "Events Reservation",
+		"super_admin": 0,
+		"admin": 0,
+		"owner": 1,
+		"tenant": 1,
+		"guest": 0
+	},
+	{
+		"module_id": 9,
+		"module_name": "Maintenance",
+		"super_admin": 0,
+		"admin": 0,
+		"owner": 1,
+		"tenant": 1,
+		"guest": 0
+	},
+	{
+		"module_id": 10,
+		"module_name": "System Maintenance",
+		"super_admin": 1,
+		"admin": 0,
+		"owner": 0,
+		"tenant": 0,
+		"guest": 0
+	}
+]

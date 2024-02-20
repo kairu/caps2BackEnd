@@ -26,7 +26,7 @@ with app.app_context():
         create_database(f'mariadb+pymysql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}')
 
 # Import your models here to avoid circular import
-from models import User, Unit, Tenant, LeaseAgreement, Payment, Bill, Cms
+from models import User, Unit, Tenant, LeaseAgreement, Payment, Bill, Cms, AccessControl
 
 # Populate the database (will be removed on production)
 def load_data_to_db(model, json_file_path, filter_key, filter_value):
@@ -53,6 +53,7 @@ def startup():
         {'model': Bill, 'filter_key': 'bill_id'},
         {'model': LeaseAgreement, 'filter_key': 'lease_agreement_id'},
         {'model': Payment, 'filter_key': 'payment_id'},
+        {'model': AccessControl, 'filter_key': 'module_id'},
     ]
 
     # Iterate over models and load data

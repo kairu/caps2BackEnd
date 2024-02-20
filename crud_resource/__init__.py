@@ -5,3 +5,4 @@ from .lease import LeaseAgreementResource
 from .payment import PaymentResource
 from .bill import BillResource
 from .cms import CmsResource
+from .accesscontrol import AccessControlResource
