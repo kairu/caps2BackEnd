@@ -88,5 +88,23 @@
 		"owner": 0,
 		"tenant": 0,
 		"guest": 0
+	},
+	{
+		"module_id": 11,
+		"module_name": "Dashboard",
+		"super_admin": 1,
+		"admin": 1,
+		"owner": 1,
+		"tenant": 1,
+		"guest": 1
+	},
+	{
+		"module_id": 12,
+		"module_name": "About",
+		"super_admin": 1,
+		"admin": 1,
+		"owner": 1,
+		"tenant": 1,
+		"guest": 1
 	}
 ]
