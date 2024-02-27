@@ -100,6 +100,8 @@ class Cms(db.Model):
     title = db.Column(db.String(200), nullable=False)
     description = db.Column(db.Text, nullable=False)
     cms_type = db.Column(db.Enum(Cms_Enum), nullable=False)
+    date_posted = db.Column(db.Date, nullable=False)
+    time_posted = db.Column(db.Time, nullable=False)
 
 class AccessControl(db.Model):
     __tablename__ = 'access_control'
