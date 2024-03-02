@@ -68,17 +68,18 @@ class UserResource(Resource):
             return {'error': 'Error creating user'}, 500
 
     # Editing/Updating Data
-    def put(self, user_id):
-        user = User.query.get(user_id)
-        if user:
-            data = request.get_json()
-            user.first_name = data['first_name']
-            user.last_name = data['last_name']
-            user.mobile_number = data['mobile_number']
-            db.session.commit()
-            return {'message': 'User updated successfully'}
-        else:
-            return {'message': 'User not found'}, 404
+    def put(self, email=None):
+        if email:
+            user = User.query.filter(User.email == email).first()
+            if user:
+                data = request.get_json()
+                user.first_name = data['first_name']
+                user.last_name = data['last_name']
+                user.mobile_number = data['mobile_number']
+                db.session.commit()
+                return {'message': 'User updated successfully'}
+            else:
+                return {'message': 'User not found'}, 404
 
     # Delete Data
     def delete(self, user_id):

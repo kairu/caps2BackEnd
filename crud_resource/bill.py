@@ -12,7 +12,6 @@ class BillResource(Resource):
                     'bill_id': bill.bill_id,
                     'unit_id': bill.unit_id,
                     'month': bill.month.name,
-                    'year': bill.year,
                     'due_date': bill.due_date.isoformat() if bill.due_date else None,
                     'total_amount': bill.total_amount,
                     'breakdown': bill.breakdown,
@@ -26,10 +25,11 @@ class BillResource(Resource):
                 'bill_id': bill.bill_id,
                 'unit_id': bill.unit_id,
                 'month': bill.month.name,
-                'year': bill.year,
                 'due_date': bill.due_date.isoformat() if bill.due_date else None,
                 'total_amount': bill.total_amount,
                 'breakdown': bill.breakdown,
+                'bill_type': bill.bill_type,
+                'payment_method': bill.payment_method,
                 'status': bill.status.name
             } for bill in bills]
         
@@ -59,7 +59,6 @@ class BillResource(Resource):
             data = request.get_json()
             bill.unit_id = data['unit_id']
             bill.month = data['month']
-            bill.year = data['year']
             bill.due_date = data['due_date']
             bill.total_amount = data['total_amount']
             bill.breakdown = data['breakdown']

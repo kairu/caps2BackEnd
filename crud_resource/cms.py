@@ -37,11 +37,6 @@ class CmsResource(Resource):
         try:
             data = request.get_json()
 
-            # Check if cms exists.
-            existing_cms = Cms.query.filtery_by(cms_id=data['cms_id']).first()
-            if existing_cms:
-                return {'error': 'Content already exists'}, 409
-            
             data['date_posted'] = datetime.now().date()
             data['time_posted'] = datetime.now().time()
             

@@ -106,5 +106,14 @@
 		"owner": 1,
 		"tenant": 1,
 		"guest": 1
+	},
+	{
+		"module_id": 13,
+		"module_name": "Analytics",
+		"super_admin": 1,
+		"admin": 1,
+		"owner": 0,
+		"tenant": 0,
+		"guest": 0
 	}
 ]

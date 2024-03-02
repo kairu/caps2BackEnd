@@ -1,202 +1,222 @@
 [
-    {
-      "bill_id": 1,
-      "unit_id": 2,
-      "month": 10,
-      "year": 1985,
-      "due_date": "2018-05-04 00:00:00",
-      "total_amount": 52297,
-      "breakdown": "Autem.",
-      "status": 1      
-    },
-    {
-      "bill_id": 2,
-      "unit_id": 7,
-      "month": 9,
-      "year": 2022,
-      "due_date": "1988-01-24 00:00:00",
-      "total_amount": 37987,
-      "breakdown": "Doloribus.",
-      "status": 3      
-    },
-    {
-      "bill_id": 3,
-      "unit_id": 9,
-      "month": 11,
-      "year": 1976,
-      "due_date": "2011-06-05 00:00:00",
-      "total_amount": 80697,
-      "breakdown": "Eos et.",
-      "status": 3      
-    },
-    {
-      "bill_id": 4,
-      "unit_id": 22,
-      "month": 7,
-      "year": 2008,
-      "due_date": "1997-04-02 00:00:00",
-      "total_amount": 31203,
-      "breakdown": "Hic quia.",
-      "status": 3      
-    },
-    {
-      "bill_id": 5,
-      "unit_id": 17,
-      "month": 2,
-      "year": 2016,
-      "due_date": "2006-10-18 00:00:00",
-      "total_amount": 41718,
-      "breakdown": "Ipsum et.",
-      "status": 1      
-    },
-    {
-      "bill_id": 6,
-      "unit_id": 14,
-      "month": 1,
-      "year": 1981,
-      "due_date": "1996-03-02 00:00:00",
-      "total_amount": 58800,
-      "breakdown": "Dolorum.",
-      "status": 3      
-    },
-    {
-      "bill_id": 7,
-      "unit_id": 16,
-      "month": 5,
-      "year": 2022,
-      "due_date": "1973-01-18 00:00:00",
-      "total_amount": 54040,
-      "breakdown": "Omnis.",
-      "status": 3      
-    },
-    {
-      "bill_id": 8,
-      "unit_id": 16,
-      "month": 6,
-      "year": 2008,
-      "due_date": "2021-09-21 00:00:00",
-      "total_amount": 65263,
-      "breakdown": "Sunt id.",
-      "status": 3      
-    },
-    {
-      "bill_id": 9,
-      "unit_id": 18,
-      "month": 1,
-      "year": 2000,
-      "due_date": "2004-04-03 00:00:00",
-      "total_amount": 67277,
-      "breakdown": "Corrupti.",
-      "status": 2      
-    },
-    {
-      "bill_id": 10,
-      "unit_id": 20,
-      "month": 11,
-      "year": 1991,
-      "due_date": "2005-01-03 00:00:00",
-      "total_amount": 52371,
-      "breakdown": "Neque.",
-      "status": 3      
-    },
-    {
-      "bill_id": 11,
-      "unit_id": 23,
-      "month": 12,
-      "year": 2002,
-      "due_date": "2017-01-30 00:00:00",
-      "total_amount": 29112,
-      "breakdown": "Totam.",
-      "status": 2      
-    },
-    {
-      "bill_id": 12,
-      "unit_id": 23,
-      "month": 9,
-      "year": 1997,
-      "due_date": "1981-04-28 00:00:00",
-      "total_amount": 39644,
-      "breakdown": "Ex.",
-      "status": 3      
-    },
-    {
-      "bill_id": 13,
-      "unit_id": 2,
-      "month": 8,
-      "year": 1977,
-      "due_date": "1982-02-18 00:00:00",
-      "total_amount": 50573,
-      "breakdown": "Dolor.",
-      "status": 2    
-    },
-    {
-      "bill_id": 14,
-      "unit_id": 7,
-      "month": 1,
-      "year": 1972,
-      "due_date": "1971-02-03 00:00:00",
-      "total_amount": 61411,
-      "breakdown": "Laborum.",
-      "status": 3      
-    },
-    {
-      "bill_id": 15,
-      "unit_id": 9,
-      "month": 7,
-      "year": 2000,
-      "due_date": "1976-11-03 00:00:00",
-      "total_amount": 40579,
-      "breakdown": "Esse.",
-      "status": 1    
-    },
-    {
-      "bill_id": 16,
-      "unit_id": 9,
-      "month": 12,
-      "year": 1990,
-      "due_date": "1979-06-14 00:00:00",
-      "total_amount": 96855,
-      "breakdown": "Dolor.",
-      "status": 1      
-    },
-    {
-      "bill_id": 17,
-      "unit_id": 14,
-      "month": 6,
-      "year": 2016,
-      "due_date": "2005-04-16 00:00:00",
-      "total_amount": 78731,
-      "breakdown": "Optio.",
-      "status": 3      
-    },
-    {
-      "bill_id": 18,
-      "unit_id": 14,
-      "month": 1,
-      "year": 1985,
-      "due_date": "2023-12-15 00:00:00",
-      "total_amount": 64221,
-      "breakdown": "Et.",
-      "status": 3      
-    },
-    {
-      "bill_id": 19,
-      "unit_id": 16,
-      "month": 9,
-      "year": 1987,
-      "due_date": "2009-07-08 00:00:00",
-      "total_amount": 16432,
-      "breakdown": "Ut enim.",
-      "status": 3      
-    },
-    {
-      "bill_id": 20,
-      "unit_id": 16,
-      "month": 8,
-      "year": 2000,
-      "due_date": "2003-10-12 00:00:00",
-      "total_amount": 50250,
-      "breakdown": "Quo quasi.",
-      "status": 3      
-    }
-  ]
+  {
+    "bill_id": 1,
+    "unit_id": 2,
+    "month": "OCTOBER",
+    "due_date": "2018-05-04",
+    "total_amount": 52297,
+    "breakdown": "Autem.",
+    "bill_type": "UTILITY",
+    "payment_method": null,
+    "status": "PAID"
+  },
+  {
+    "bill_id": 2,
+    "unit_id": 7,
+    "month": "SEPTEMBER",
+    "due_date": "1988-01-24",
+    "total_amount": 37987,
+    "breakdown": "Doloribus.",
+    "bill_type": "ASSOCIATION",
+    "payment_method": null,
+    "status": "REVIEW"
+  },
+  {
+    "bill_id": 3,
+    "unit_id": 9,
+    "month": "NOVEMBER",
+    "due_date": "2011-06-05",
+    "total_amount": 80697,
+    "breakdown": "Eos et.",
+    "bill_type": "PARKING",
+    "payment_method": null,
+    "status": "PENDING"
+  },
+  {
+    "bill_id": 4,
+    "unit_id": 22,
+    "month": "JULY",
+    "due_date": "1997-04-02",
+    "total_amount": 31203,
+    "breakdown": "Hic quia.",
+    "bill_type": "UTILITY",
+    "payment_method": null,
+    "status": "PAID"
+  },
+  {
+    "bill_id": 5,
+    "unit_id": 17,
+    "month": "FEBRUARY",
+    "due_date": "2006-10-18",
+    "total_amount": 41718,
+    "breakdown": "Ipsum et.",
+    "bill_type": "MAINTENANCE",
+    "payment_method": null,
+    "status": "PAID"
+  },
+  {
+    "bill_id": 6,
+    "unit_id": 14,
+    "month": "FEBRUARY",
+    "due_date": "2024-02-02",
+    "total_amount": 58800,
+    "breakdown": "Dolorum.",
+    "bill_type": "ASSOCIATION",
+    "payment_method": null,
+    "status": "PAID"
+  },
+  {
+    "bill_id": 7,
+    "unit_id": 16,
+    "month": "MAY",
+    "due_date": "2024-02-18",
+    "total_amount": 54040,
+    "breakdown": "Omnis.",
+    "bill_type": "INTERNETCABLE",
+    "payment_method": null,
+    "status": "PAID"
+  },
+  {
+    "bill_id": 8,
+    "unit_id": 16,
+    "month": "JUNE",
+    "due_date": "2021-09-21",
+    "total_amount": 65263,
+    "breakdown": "Sunt id.",
+    "bill_type": "ETC",
+    "payment_method": null,
+    "status": "PAID"
+  },
+  {
+    "bill_id": 9,
+    "unit_id": 18,
+    "month": "JANUARY",
+    "due_date": "2004-04-03",
+    "total_amount": 67277,
+    "breakdown": "Corrupti.",
+    "bill_type": "INTERNETCABLE",
+    "payment_method": null,
+    "status": "PENDING"
+  },
+  {
+    "bill_id": 10,
+    "unit_id": 20,
+    "month": "NOVEMBER",
+    "due_date": "2005-01-03",
+    "total_amount": 52371,
+    "breakdown": "Neque.",
+    "bill_type": "ASSOCIATION",
+    "payment_method": null,
+    "status": "PAID"
+  },
+  {
+    "bill_id": 11,
+    "unit_id": 23,
+    "month": "DECEMBER",
+    "due_date": "2017-01-30",
+    "total_amount": 29112,
+    "breakdown": "Totam.",
+    "bill_type": "UTILITY",
+    "payment_method": null,
+    "status": "PAID"
+  },
+  {
+    "bill_id": 12,
+    "unit_id": 23,
+    "month": "SEPTEMBER",
+    "due_date": "2024-02-28",
+    "total_amount": 39644,
+    "breakdown": "Ex.",
+    "bill_type": "ASSOCIATION",
+    "payment_method": null,
+    "status": "PENDING"
+  },
+  {
+    "bill_id": 13,
+    "unit_id": 2,
+    "month": "AUGUST",
+    "due_date": "2024-02-18",
+    "total_amount": 50573,
+    "breakdown": "Dolor.",
+    "bill_type": "ASSOCIATION",
+    "payment_method": null,
+    "status": "PAID"
+  },
+  {
+    "bill_id": 14,
+    "unit_id": 7,
+    "month": "JANUARY",
+    "due_date": "1971-02-03",
+    "total_amount": 61411,
+    "breakdown": "Laborum.",
+    "bill_type": "UTILITY",
+    "payment_method": null,
+    "status": "REVIEW"
+  },
+  {
+    "bill_id": 15,
+    "unit_id": 9,
+    "month": "JULY",
+    "due_date": "1976-11-03",
+    "total_amount": 40579,
+    "breakdown": "Esse.",
+    "bill_type": "MAINTENANCE",
+    "payment_method": null,
+    "status": "PAID"
+  },
+  {
+    "bill_id": 16,
+    "unit_id": 9,
+    "month": "DECEMBER",
+    "due_date": "2024-02-14",
+    "total_amount": 96855,
+    "breakdown": "Dolor.",
+    "bill_type": "MAINTENANCE",
+    "payment_method": null,
+    "status": "PAID"
+  },
+  {
+    "bill_id": 17,
+    "unit_id": 14,
+    "month": "JUNE",
+    "due_date": "2005-04-16",
+    "total_amount": 78731,
+    "breakdown": "Optio.",
+    "bill_type": "INTERNETCABLE",
+    "payment_method": null,
+    "status": "PAID"
+  },
+  {
+    "bill_id": 18,
+    "unit_id": 14,
+    "month": "JANUARY",
+    "due_date": "2024-02-15",
+    "total_amount": 64221,
+    "breakdown": "Et.",
+    "bill_type": "UTILITY",
+    "payment_method": null,
+    "status": "PAID"
+  },
+  {
+    "bill_id": 19,
+    "unit_id": 16,
+    "month": "SEPTEMBER",
+    "due_date": "2024-02-08",
+    "total_amount": 16432,
+    "breakdown": "Ut enim.",
+    "bill_type": "PARKING",
+    "payment_method": null,
+    "status": "PAID"
+  },
+  {
+    "bill_id": 20,
+    "unit_id": 16,
+    "month": "AUGUST",
+    "due_date": "2024-02-12",
+    "total_amount": 50250,
+    "breakdown": "Quo quasi.",
+    "bill_type": "ETC",
+    "payment_method": null,
+    "status": "PAID"
+  }
+]

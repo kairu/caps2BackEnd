@@ -79,8 +79,7 @@ class Bill(db.Model):
     bill_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     unit_id = db.Column(db.Integer, db.ForeignKey('units.unit_id'), nullable=False)
     month = db.Column(db.Enum(month), nullable=False)
-    year = db.Column(db.Integer, nullable=False)
-    due_date = db.Column(db.DateTime, nullable=False)
+    due_date = db.Column(db.Date, nullable=False)
     total_amount = db.Column(db.Integer, nullable=False)
     breakdown = db.Column(db.Text, nullable=True)
     bill_type = db.Column(db.Enum(bill_type), nullable=True)
@@ -88,9 +87,6 @@ class Bill(db.Model):
     status = db.Column(db.Enum(status), default=status.PENDING)
 
     unit = db.relationship("Unit", backref="bills")
-    __table_args__ = (
-        CheckConstraint('bills.year >= 1500', name='check_positive_year'),
-    )
 
 class Cms(db.Model):
     __tablename__ = 'cms'
