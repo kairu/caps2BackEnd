@@ -42,10 +42,11 @@ class UnitResource(Resource):
         try:
             data = request.get_json()
             
+            # TODO Duplicate tower, floor and unit is allowed. what to check only is??
             # Check if unit already exists
-            existing_unit = Unit.query.filter_by(tower_number=data['tower_number'], floor_number=data['floor_number'], unit_number=data['unit_number']).first()
-            if existing_unit:
-                return {'error': 'Unit with this tower number, floor number, and unit number already exists'}, 409
+            # existing_unit = Unit.query.filter_by(tower_number=data['tower_number'], floor_number=data['floor_number'], unit_number=data['unit_number']).first()
+            # if existing_unit:
+            #     return {'error': 'Unit with this tower number, floor number, and unit number already exists'}, 409
 
             new_unit = Unit(**data)
             db.session.add(new_unit)
