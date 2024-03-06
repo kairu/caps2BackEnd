@@ -76,6 +76,10 @@ class UserResource(Resource):
                 user.first_name = data['first_name']
                 user.last_name = data['last_name']
                 user.mobile_number = data['mobile_number']
+                if data.get('user_type'):
+                    user.user_type = data['user_type']
+                if data.get('is_validated'):
+                    user.is_validated = data['is_validated']
                 db.session.commit()
                 return {'message': 'User updated successfully'}
             else:

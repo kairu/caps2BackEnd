@@ -65,11 +65,17 @@ class UnitResource(Resource):
             unit.tower_number = data['tower_number']
             unit.floor_number = data['floor_number']
             unit.unit_number = data['unit_number']
-            unit.sq_foot = data['sq_foot']
-            unit.number_of_bedrooms = data['number_of_bedrooms']
-            unit.number_of_bathrooms = data['number_of_bathrooms']
-            unit.parking_slot = data['parking_slot']
-            unit.remaining_balance = data['remaining_balance']
+            if data.get('sq_foot'):
+                unit.sq_foot = data['sq_foot']
+            if data.get('number_of_bedrooms'):        
+                unit.number_of_bedrooms = data['number_of_bedrooms']
+            if data.get('number_of_bathrooms'):
+                unit.number_of_bathrooms = data['number_of_bathrooms']  
+            if data.get('parking_slot'):
+                unit.parking_slot = data['parking_slot']
+            if data.get('remaining_balance'):
+                unit.remaining_balance = data['remaining_balance']
+
             db.session.commit()
             return {'message': 'Unit updated successfully'}
         else:
