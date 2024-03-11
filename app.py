@@ -1,5 +1,4 @@
 from creation import app, api, startup
-from datetime import datetime
 # Define Resources
 from crud_resource import UserResource, UnitResource, TenantResource, LeaseAgreementResource, PaymentResource, BillResource, CmsResource, AccessControlResource
 
@@ -20,3 +19,11 @@ def index():
     # print(f'Date is: {datetime.now().date()}')
     # print(f'Time is: {datetime.now().time()}')
     return 'Hello World!'
+
+
+
+
+
+
+
+

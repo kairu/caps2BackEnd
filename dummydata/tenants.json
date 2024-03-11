@@ -1,122 +1,122 @@
-[
+  [
     {
       "tenant_id": 1,
       "user_id": 20230001,
-      "move_in_date": "1970-05-18 00:00:00",
-      "move_out_date": "1972-07-26 00:00:00"      
+      "move_in_date": "1970-05-18",
+      "move_out_date": "1972-07-26"
     },
     {
       "tenant_id": 2,
       "user_id": 20230002,
-      "move_in_date": "2015-03-14 00:00:00",
-      "move_out_date": "1986-11-16 00:00:00"      
+      "move_in_date": "2015-03-14",
+      "move_out_date": "1986-11-16"
     },
     {
       "tenant_id": 3,
       "user_id": 20230003,
-      "move_in_date": "1981-03-02 00:00:00",
-      "move_out_date": "2001-04-19 00:00:00"      
+      "move_in_date": "1981-03-02",
+      "move_out_date": "2001-04-19"
     },
     {
       "tenant_id": 4,
       "user_id": 20230004,
-      "move_in_date": "1987-11-13 00:00:00",
-      "move_out_date": "1989-10-04 00:00:00"      
+      "move_in_date": "1987-11-13",
+      "move_out_date": "1989-10-04"
     },
     {
       "tenant_id": 5,
       "user_id": 20230005,
-      "move_in_date": "2014-03-19 00:00:00",
-      "move_out_date": "2004-09-14 00:00:00"      
+      "move_in_date": "2014-03-19",
+      "move_out_date": "2004-09-14"
     },
     {
       "tenant_id": 6,
       "user_id": 20230006,
-      "move_in_date": "1990-02-21 00:00:00",
-      "move_out_date": "1994-08-16 00:00:00"      
+      "move_in_date": "1990-02-21",
+      "move_out_date": "1994-08-16"
     },
     {
       "tenant_id": 7,
       "user_id": 20230007,
-      "move_in_date": "1978-06-24 00:00:00",
-      "move_out_date": "1981-05-16 00:00:00"      
+      "move_in_date": "1978-06-24",
+      "move_out_date": "1981-05-16"
     },
     {
       "tenant_id": 8,
       "user_id": 20230008,
-      "move_in_date": "1984-03-14 00:00:00",
-      "move_out_date": "2010-09-12 00:00:00"      
+      "move_in_date": "1984-03-14",
+      "move_out_date": "2010-09-12"
     },
     {
       "tenant_id": 9,
       "user_id": 20230009,
-      "move_in_date": "2013-08-15 00:00:00",
-      "move_out_date": "2000-12-07 00:00:00"      
+      "move_in_date": "2013-08-15",
+      "move_out_date": "2000-12-07"
     },
     {
       "tenant_id": 10,
       "user_id": 20230010,
-      "move_in_date": "2007-01-01 00:00:00",
-      "move_out_date": "2008-11-07 00:00:00"      
+      "move_in_date": "2007-01-01",
+      "move_out_date": "2008-11-07"
     },
     {
       "tenant_id": 11,
       "user_id": 20230001,
-      "move_in_date": "1974-05-05 00:00:00",
-      "move_out_date": "2012-09-21 00:00:00"      
+      "move_in_date": "1974-05-05",
+      "move_out_date": "2012-09-21"
     },
     {
       "tenant_id": 12,
       "user_id": 20230002,
-      "move_in_date": "2018-02-02 00:00:00",
-      "move_out_date": "2011-11-14 00:00:00"      
+      "move_in_date": "2018-02-02",
+      "move_out_date": "2011-11-14"
     },
     {
       "tenant_id": 13,
       "user_id": 20230003,
-      "move_in_date": "1979-05-13 00:00:00",
-      "move_out_date": "1970-05-25 00:00:00"      
+      "move_in_date": "1979-05-13",
+      "move_out_date": "1970-05-25"
     },
     {
       "tenant_id": 14,
       "user_id": 20230004,
-      "move_in_date": "1998-06-07 00:00:00",
-      "move_out_date": "2008-05-16 00:00:00"      
+      "move_in_date": "1998-06-07",
+      "move_out_date": "2008-05-16"
     },
     {
       "tenant_id": 15,
       "user_id": 20230005,
-      "move_in_date": "1990-04-22 00:00:00",
-      "move_out_date": "2011-02-28 00:00:00"      
+      "move_in_date": "1990-04-22",
+      "move_out_date": "2011-02-28"
     },
     {
       "tenant_id": 16,
       "user_id": 20230006,
-      "move_in_date": "1983-11-08 00:00:00",
-      "move_out_date": "1990-08-29 00:00:00"      
+      "move_in_date": "1983-11-08",
+      "move_out_date": "1990-08-29"
     },
     {
       "tenant_id": 17,
       "user_id": 20230007,
-      "move_in_date": "2019-09-30 00:00:00",
-      "move_out_date": "2018-05-20 00:00:00"      
+      "move_in_date": "2019-09-30",
+      "move_out_date": "2018-05-20"
     },
     {
       "tenant_id": 18,
       "user_id": 20230008,
-      "move_in_date": "1978-03-11 00:00:00",
-      "move_out_date": "2001-06-10 00:00:00"      
+      "move_in_date": "1978-03-11",
+      "move_out_date": "2001-06-10"
     },
     {
       "tenant_id": 19,
       "user_id": 20230009,
-      "move_in_date": "2013-08-14 00:00:00",
-      "move_out_date": "1978-04-06 00:00:00"      
+      "move_in_date": "2013-08-14",
+      "move_out_date": "1978-04-06"
     },
     {
       "tenant_id": 20,
       "user_id": 20230010,
-      "move_in_date": "2022-02-20 00:00:00",
-      "move_out_date": "1976-09-08 00:00:00"      
+      "move_in_date": "2022-02-20",
+      "move_out_date": "1976-09-08"
     }
   ]

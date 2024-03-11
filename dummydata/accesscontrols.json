@@ -73,7 +73,7 @@
 	},
 	{
 		"module_id": 9,
-		"module_name": "Maintenance",
+		"module_name": "Reports",
 		"super_admin": 0,
 		"admin": 0,
 		"owner": 1,

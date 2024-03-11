@@ -16,7 +16,10 @@ class CmsResource(Resource):
                     'description': cms.description,
                     'cms_type': cms.cms_type.name,
                     'date_posted': cms.date_posted.isoformat() if cms.date_posted else None,
-                    'time_posted': cms.time_posted.isoformat() if cms.time_posted else None
+                    'time_posted': cms.time_posted.isoformat() if cms.time_posted else None,
+                    'date_to_post': cms.date_to_post.isoformat() if cms.date_to_post else None,
+                    'date_to_end': cms.date_to_end.isoformat() if cms.date_to_end else None,
+                    'archive': cms.archive
                 }
             else:
                 return {'message': 'No such Content'},404
@@ -29,7 +32,10 @@ class CmsResource(Resource):
                 'description': cms.description,
                 'cms_type': cms.cms_type.name,
                 'date_posted': cms.date_posted.isoformat() if cms.date_posted else None,
-                'time_posted': cms.time_posted.isoformat() if cms.time_posted else None
+                'time_posted': cms.time_posted.isoformat() if cms.time_posted else None,
+                'date_to_post': cms.date_to_post.isoformat() if cms.date_to_post else None,
+                'date_to_end': cms.date_to_end.isoformat() if cms.date_to_end else None,
+                'archive': cms.archive
             }for cms in cmss]
         
     # Add data
@@ -60,6 +66,14 @@ class CmsResource(Resource):
             cms.cms_type = data['cms_type']
             cms.date_posted = datetime.now().date()
             cms.time_posted = datetime.now().time()
+            
+            if 'date_to_post' in data:
+                cms.date_to_post = data['date_to_post']
+            if 'date_to_end' in data:
+                cms.date_to_end = data['date_to_end']
+
+            cms.archive = data['archive']
+
             db.session.commit()
             return {'message': 'Content updated Successfully',
                     'date_posted': cms.date_posted.isoformat(),
@@ -74,6 +88,8 @@ class CmsResource(Resource):
         if cms:
             db.session.delete(cms)
             db.session.commit()
-            return {'message': 'Deleted Content Data suiccessfully'}
+            return {'message': 'Deleted Content Data successfully'}
         else:
             return {'message': 'Content Data not found'}, 404
+        
+    

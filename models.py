@@ -36,8 +36,8 @@ class Tenant(db.Model):
 
     tenant_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
-    move_in_date = db.Column(db.DateTime, nullable=True)
-    move_out_date = db.Column(db.DateTime, nullable=True)
+    move_in_date = db.Column(db.Date, nullable=True)
+    move_out_date = db.Column(db.Date, nullable=True)
     
     user = db.relationship("User", backref="tenants")
     lease_agreements = db.relationship("LeaseAgreement", backref="tenant")
@@ -49,8 +49,8 @@ class LeaseAgreement(db.Model):
     unit_id = db.Column(db.Integer, db.ForeignKey('units.unit_id'), nullable=False)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     tenant_id = db.Column(db.Integer, db.ForeignKey('tenants.tenant_id'), nullable=False)
-    start_date = db.Column(db.DateTime, nullable=False)
-    end_date = db.Column(db.DateTime, nullable=False)
+    start_date = db.Column(db.Date, nullable=False)
+    end_date = db.Column(db.Date, nullable=False)
     monthly_rent = db.Column(db.Integer, nullable=False)
     security_deposit = db.Column(db.Integer, nullable=True)
 
@@ -63,7 +63,7 @@ class Payment(db.Model):
     payment_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     unit_id = db.Column(db.Integer, db.ForeignKey('units.unit_id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
-    payment_date = db.Column(db.DateTime, nullable=False)
+    payment_date = db.Column(db.Date, nullable=False)
     amount = db.Column(db.Integer, nullable=False)
     payment_method = db.Column(db.String(50), nullable=True)
     reference_number = db.Column(db.String(50), nullable=True)
@@ -98,6 +98,9 @@ class Cms(db.Model):
     cms_type = db.Column(db.Enum(Cms_Enum), nullable=False)
     date_posted = db.Column(db.Date, nullable=False)
     time_posted = db.Column(db.Time, nullable=False)
+    date_to_post = db.Column(db.Date, nullable=True)
+    date_to_end = db.Column(db.Date, nullable=True)
+    archive = db.Column(db.Boolean, default=False)
 
 class AccessControl(db.Model):
     __tablename__ = 'access_control'
