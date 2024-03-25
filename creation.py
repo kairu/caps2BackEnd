@@ -1,7 +1,8 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from sqlalchemy import inspect
 from sqlalchemy_utils import create_database, database_exists
 from flask_cors import CORS
 import json
@@ -16,10 +17,13 @@ db_port = '3306'
 db_name = 'avida_track'
 
 app = Flask(__name__)
-CORS(app)
+# CORS(app)
+CORS(app, resources={r"/*": {"origins": ["http://localhost:4200"]}})
 api = Api(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mariadb+pymysql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['BULLETIN_IMAGES'] = 'static/bulletin-board'
+
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
@@ -41,18 +45,19 @@ def check_cms_archive():
             cms.archive = True
     db.session.commit()
 
-
 # Schedule recurring checks  
 def schedule_checks():
     # scheduler.enter(86400, 1, check_cms_archive)
     scheduler.enter(time.mktime(datetime.now().replace(hour=0, minute=0, second=0).timetuple()) - time.time(), 1, check_cms_archive)
     scheduler.run()
 
-
 with app.app_context():
     if not database_exists(f'mariadb+pymysql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}'):
         create_database(f'mariadb+pymysql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}')
-    schedule_checks()
+    if inspect(db.engine).has_table('cms') and Cms.query.count() > 0:
+        schedule_checks()
+        print('Scheduler working')
+
 
 # Populate the database (will be removed on production)
 def load_data_to_db(model, json_file_path, filter_key, filter_value):
