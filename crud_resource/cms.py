@@ -12,6 +12,7 @@ class CmsResource(Resource):
                 return{
                     'cms_id': cms.cms_id,
                     'user_id': cms.user_id,
+                    'image_path': cms.image_path,
                     'title': cms.title,
                     'description': cms.description,
                     'cms_type': cms.cms_type.name,
@@ -20,7 +21,7 @@ class CmsResource(Resource):
                     'date_to_post': cms.date_to_post.isoformat() if cms.date_to_post else None,
                     'date_to_end': cms.date_to_end.isoformat() if cms.date_to_end else None,
                     'archive': cms.archive
-                }
+                }, 200
             else:
                 return {'message': 'No such Content'},404
         else:
@@ -28,6 +29,7 @@ class CmsResource(Resource):
             return [{
                 'cms_id': cms.cms_id,
                 'user_id': cms.user_id,
+                'image_path': cms.image_path,
                 'title': cms.title,
                 'description': cms.description,
                 'cms_type': cms.cms_type.name,
@@ -61,6 +63,7 @@ class CmsResource(Resource):
         cms = Cms.query.get(cms_id)
         if cms:
             cms.user_id = data['user_id']
+            cms.image_apth = data['image_path']
             cms.title = data['title']
             cms.description = data['description']
             cms.cms_type = data['cms_type']
@@ -71,7 +74,8 @@ class CmsResource(Resource):
                 cms.date_to_post = data['date_to_post']
             if 'date_to_end' in data:
                 cms.date_to_end = data['date_to_end']
-
+                
+            cms.image_path = data['image_path']
             cms.archive = data['archive']
 
             db.session.commit()
