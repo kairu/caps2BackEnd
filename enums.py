@@ -36,9 +36,16 @@ class status(enum.IntEnum):
     PAID = 3
 
 class bill_type(enum.IntEnum):
-    UTILITY = 1
-    ASSOCIATION = 2
-    PARKING = 3
+    WATER = 1 
+    ASSOCIATION = 2 # INterest
+    PARKING = 3 # Interest
     MAINTENANCE = 4
-    INTERNETCABLE = 5
-    ETC = 6
+    ETC = 5
+    
+MIMETYPES = {
+    '.jpg': 'image/jpeg',
+    '.jpeg': 'image/jpeg',
+    '.png': 'image/png',
+    '.gif': 'image/gif',
+    '.bmp': 'image/bmp',
+}
