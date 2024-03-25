@@ -15,6 +15,7 @@ class BillResource(Resource):
                     'due_date': bill.due_date.isoformat() if bill.due_date else None,
                     'total_amount': bill.total_amount,
                     'breakdown': bill.breakdown,
+                    'bill_type': bill.bill_type,
                     'status': bill.status.name
                 }
             else:
@@ -62,7 +63,7 @@ class BillResource(Resource):
             bill.due_date = data['due_date']
             bill.total_amount = data['total_amount']
             bill.breakdown = data['breakdown']
-            bill.type = data['type']
+            bill.bill_type = data['bill_type']
             bill.payment_method = data['payment_method']
             bill.status = data['status']
             db.session.commit()
