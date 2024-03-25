@@ -15,6 +15,7 @@ class User(db.Model):
     is_validated = db.Column(db.Boolean, default=False)
 
     unit = db.relationship("Unit", backref="users")
+    cms = db.relationship("Cms", backref="users")
 
 class Unit(db.Model):
     __tablename__ = 'units'
@@ -67,9 +68,8 @@ class Payment(db.Model):
     amount = db.Column(db.Integer, nullable=False)
     payment_method = db.Column(db.String(50), nullable=True)
     reference_number = db.Column(db.String(50), nullable=True)
-    image_path = db.Column(db.String(255), nullable=True)
+    image_path = db.Column(db.String(255), nullable=True) 
     status = db.Column(db.Enum(status), default=status.PENDING)
-
     unit = db.relationship("Unit", backref="payments")
     user = db.relationship("User", backref="payments")
 
@@ -93,6 +93,7 @@ class Cms(db.Model):
     
     cms_id = db.Column(db.Integer, primary_key=True,autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    image_path = db.Column(db.String(255), nullable=True)
     title = db.Column(db.String(200), nullable=False)
     description = db.Column(db.Text, nullable=False)
     cms_type = db.Column(db.Enum(Cms_Enum), nullable=False)
