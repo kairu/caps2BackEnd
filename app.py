@@ -6,7 +6,7 @@ import pathlib
 from enums import MIMETYPES
 
 # Add Resources to the API
-api.add_resource(UserResource, '/user', '/user/<string:email>')
+api.add_resource(UserResource, '/user', '/user/<string:email_or_user_id>')
 api.add_resource(UnitResource, '/unit', '/unit/<int:unit_id>')
 api.add_resource(TenantResource, '/tenant', '/tenant/<int:tenant_id>')
 api.add_resource(LeaseAgreementResource, '/lease', '/lease/<int:lease_agreement_id>')

@@ -1,3 +1,4 @@
+import re
 from creation import db, User
 from flask_restful import Resource
 from flask import request
@@ -5,9 +6,13 @@ from sqlalchemy.exc import IntegrityError
 
 class UserResource(Resource):
     # Get Data
-    def get(self, email=None):
-        if email:
-            user = User.query.filter(User.email == email).first()
+    def get(self, email_or_user_id=None):
+        if email_or_user_id:
+            if re.match(r'^[\w\.-]+@[\w\.-]+$', email_or_user_id):
+                user = User.query.filter(User.email == email_or_user_id).first()
+            else:
+                user = User.query.get(email_or_user_id)
+                
             if user:
                 user_data = {
                     'user_id': user.user_id,
@@ -44,13 +49,6 @@ class UserResource(Resource):
                         } for bill in unit.bills]
                     } for unit in user.unit]
 
-                if user.tenants:
-                    user_data['tenants'] = [{
-                        'tenant_id': tenant.tenant_id,
-                        'move_in_date': tenant.move_in_date.isoformat() if tenant.move_in_date else None,
-                        'move_out_date': tenant.move_out_date.isoformat() if tenant.move_out_date else None
-                    } for tenant in user.tenants]
-
                 if user.lease_agreements:
                     user_data['lease_agreements'] = [{
                         'lease_agreement_id': agreement.lease_agreement_id,
@@ -58,7 +56,12 @@ class UserResource(Resource):
                         'start_date': agreement.start_date.isoformat() if agreement.start_date else None,
                         'end_date': agreement.end_date.isoformat() if agreement.end_date else None,
                         'monthly_rent': agreement.monthly_rent,
-                        'security_deposit': agreement.security_deposit
+                        'security_deposit': agreement.security_deposit,
+                        'tenants': [{
+                            'tenant_id': tenant.tenant_id,
+                            'move_in_date': tenant.move_in_date.isoformat() if tenant.move_in_date else None,
+                            'move_out_date': tenant.move_out_date.isoformat() if tenant.move_out_date else None
+                        } for tenant in user.tenants]
                     } for agreement in user.lease_agreements]
 
                 if user.payments:
