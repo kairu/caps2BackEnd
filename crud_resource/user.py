@@ -5,6 +5,18 @@ from flask import request
 from sqlalchemy.exc import IntegrityError
 
 class UserResource(Resource):
+    
+    def get_tenant_info(self, tenant):
+        return {
+            'user_id': tenant.user_id,
+            'first_name': tenant.user.first_name,
+            'last_name': tenant.user.last_name,
+            'email': tenant.user.email,
+            'mobile_number': tenant.user.mobile_number,
+            'user_type': tenant.user.user_type.name,
+            'is_validated': tenant.user.is_validated
+        }
+        
     # Get Data
     def get(self, email_or_user_id=None):
         if email_or_user_id:
@@ -53,15 +65,12 @@ class UserResource(Resource):
                     user_data['lease_agreements'] = [{
                         'lease_agreement_id': agreement.lease_agreement_id,
                         'unit_id': agreement.unit_id,
+                        'tenant_id': agreement.tenant_id,
                         'start_date': agreement.start_date.isoformat() if agreement.start_date else None,
                         'end_date': agreement.end_date.isoformat() if agreement.end_date else None,
                         'monthly_rent': agreement.monthly_rent,
                         'security_deposit': agreement.security_deposit,
-                        'tenants': [{
-                            'tenant_id': tenant.tenant_id,
-                            'move_in_date': tenant.move_in_date.isoformat() if tenant.move_in_date else None,
-                            'move_out_date': tenant.move_out_date.isoformat() if tenant.move_out_date else None
-                        } for tenant in user.tenants]
+                        'tenant_info': self.get_tenant_info(agreement.tenant)
                     } for agreement in user.lease_agreements]
 
                 if user.payments:
