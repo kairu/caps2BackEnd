@@ -13,10 +13,12 @@ class LeaseAgreementResource(Resource):
                     'unit_id': lease.unit_id,
                     'owner_id': lease.owner_id,
                     'tenant_id': lease.tenant_id,
+                    'contract': lease.contract,
                     'start_date': lease.start_date.isoformat() if lease.start_date else None,
                     'end_date': lease.end_date.isoformat() if lease.end_date else None,
                     'monthly_rent': lease.monthly_rent,
-                    'security_deposit': lease.security_deposit
+                    'security_deposit': lease.security_deposit,
+                    'remaining_balance': lease.remaining_balance
                 }
             else:
                 return {'message': 'Tenant not found'}, 404
@@ -27,10 +29,13 @@ class LeaseAgreementResource(Resource):
                     'unit_id': lease.unit_id,
                     'owner_id': lease.owner_id,
                     'tenant_id': lease.tenant_id,
+                    'contract': lease.contract,
                     'start_date': lease.start_date.isoformat() if lease.start_date else None,
                     'end_date': lease.end_date.isoformat() if lease.end_date else None,
                     'monthly_rent': lease.monthly_rent,
-                    'security_deposit': lease.security_deposit
+                    'security_deposit': lease.security_deposit,
+                    'remaining_balance': lease.remaining_balance
+                    
             }for lease in leases]
     
     # Add data
@@ -60,10 +65,12 @@ class LeaseAgreementResource(Resource):
             lease.unit_id = data['unit_id']
             lease.owner_id = data['owner_id']
             lease.tenant_id = data['tenant_id']
+            lease.contract = data['contract']
             lease.start_date = data['start_date']
             lease.end_date = data['end_date']
             lease.monthly_rent = data['monthly_rent']
             lease.security_deposit = data['security_deposit']
+            lease.remaining_balance = data['remaining_balance']
             db.session.commit()
             return{ 'message': 'Lease Agreement updated successfully'}
         else:

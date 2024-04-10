@@ -66,10 +66,12 @@ class UserResource(Resource):
                         'lease_agreement_id': agreement.lease_agreement_id,
                         'unit_id': agreement.unit_id,
                         'tenant_id': agreement.tenant_id,
+                        'contract': agreement.contract,
                         'start_date': agreement.start_date.isoformat() if agreement.start_date else None,
                         'end_date': agreement.end_date.isoformat() if agreement.end_date else None,
                         'monthly_rent': agreement.monthly_rent,
                         'security_deposit': agreement.security_deposit,
+                        'remaining_balance': agreement.remaining_balance,
                         'tenant_info': self.get_tenant_info(agreement.tenant)
                     } for agreement in user.lease_agreements]
 
@@ -140,21 +142,17 @@ class UserResource(Resource):
                         } for bill in unit.bills]
                     } for unit in user.unit]
 
-                if user.tenants:
-                    user_data['tenants'] = [{
-                        'tenant_id': tenant.tenant_id,
-                        'move_in_date': tenant.move_in_date.isoformat() if tenant.move_in_date else None,
-                        'move_out_date': tenant.move_out_date.isoformat() if tenant.move_out_date else None
-                    } for tenant in user.tenants]
-
                 if user.lease_agreements:
                     user_data['lease_agreements'] = [{
                         'lease_agreement_id': agreement.lease_agreement_id,
                         'unit_id': agreement.unit_id,
+                        'contract': agreement.contract,
                         'start_date': agreement.start_date.isoformat() if agreement.start_date else None,
                         'end_date': agreement.end_date.isoformat() if agreement.end_date else None,
                         'monthly_rent': agreement.monthly_rent,
-                        'security_deposit': agreement.security_deposit
+                        'security_deposit': agreement.security_deposit,
+                        'remaining_balance': agreement.remaining_balance,
+                        'tenant_info': self.get_tenant_info(agreement.tenant)
                     } for agreement in user.lease_agreements]
 
                 if user.payments:
