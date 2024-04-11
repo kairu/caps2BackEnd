@@ -28,7 +28,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 # Import your models here to avoid circular import
-from models import User, Unit, LeaseAgreement, Payment, Bill, Cms, AccessControl
+from models import User, Unit, Tenant, LeaseAgreement, Payment, Bill, Cms, AccessControl
 
 scheduler = sched.scheduler(time.time, time.sleep)
 
@@ -79,6 +79,7 @@ def startup():
     models = [
         {'model': User, 'filter_key': 'user_id'},
         {'model': Cms, 'filter_key': 'cms_id'},
+        {'model': Tenant, 'filter_key': 'tenant_id'},
         {'model': Unit, 'filter_key': 'unit_id'},
         {'model': Bill, 'filter_key': 'bill_id'},
         {'model': LeaseAgreement, 'filter_key': 'lease_agreement_id'},
