@@ -20,7 +20,8 @@ class CmsResource(Resource):
                     'time_posted': cms.time_posted.isoformat() if cms.time_posted else None,
                     'date_to_post': cms.date_to_post.isoformat() if cms.date_to_post else None,
                     'date_to_end': cms.date_to_end.isoformat() if cms.date_to_end else None,
-                    'archive': cms.archive
+                    'archive': cms.archive,
+                    'status': cms.status.name
                 }, 200
             else:
                 return {'message': 'No such Content'},404
@@ -37,7 +38,8 @@ class CmsResource(Resource):
                 'time_posted': cms.time_posted.isoformat() if cms.time_posted else None,
                 'date_to_post': cms.date_to_post.isoformat() if cms.date_to_post else None,
                 'date_to_end': cms.date_to_end.isoformat() if cms.date_to_end else None,
-                'archive': cms.archive
+                'archive': cms.archive,
+                'status': cms.status.name
             }for cms in cmss]
         
     # Add data
@@ -77,6 +79,7 @@ class CmsResource(Resource):
                 
             cms.image_path = data['image_path']
             cms.archive = data['archive']
+            cms.status = data['status']
 
             db.session.commit()
             return {'message': 'Content updated Successfully',

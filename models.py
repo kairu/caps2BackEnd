@@ -31,25 +31,13 @@ class Unit(db.Model):
     parking_slot = db.Column(db.String(20), nullable=True)
     remaining_balance = db.Column(db.Integer, nullable=True)
 
-
-class Tenant(db.Model):
-    __tablename__ = 'tenants'
-
-    tenant_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
-    move_in_date = db.Column(db.Date, nullable=True)
-    move_out_date = db.Column(db.Date, nullable=True)
-    
-    user = db.relationship("User", backref="tenants")
-    lease_agreements = db.relationship("LeaseAgreement", backref="tenant")
-
 class LeaseAgreement(db.Model):
     __tablename__ = 'lease_agreements'
 
     lease_agreement_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     unit_id = db.Column(db.Integer, db.ForeignKey('units.unit_id'), nullable=False)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
-    tenant_id = db.Column(db.Integer, db.ForeignKey('tenants.tenant_id'), nullable=False)
+    tenant_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     contract = db.Column(db.String(255), nullable=True)
     start_date = db.Column(db.Date, nullable=False)
     end_date = db.Column(db.Date, nullable=False)
@@ -64,16 +52,15 @@ class Payment(db.Model):
     __tablename__ = 'payments'
 
     payment_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    unit_id = db.Column(db.Integer, db.ForeignKey('units.unit_id'), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
-    payment_date = db.Column(db.Date, nullable=False)
-    amount = db.Column(db.Integer, nullable=False)
+    lease_agreement_id = db.Column(db.Integer, db.ForeignKey('lease_agreements.lease_agreement_id'), nullable=False)
+    payment_date = db.Column(db.Date, nullable=True)
+    amount = db.Column(db.Integer, nullable=True)
     payment_method = db.Column(db.String(50), nullable=True)
-    reference_number = db.Column(db.String(50), nullable=True)
+    reference_number = db.Column(db.String(100), nullable=True)
     image_path = db.Column(db.String(255), nullable=True) 
     status = db.Column(db.Enum(status), default=status.PENDING)
-    unit = db.relationship("Unit", backref="payments")
-    user = db.relationship("User", backref="payments")
+    
+    lease = db.relationship("LeaseAgreement", backref="payments")
 
 class Bill(db.Model):
     __tablename__ = 'bills'
@@ -104,6 +91,7 @@ class Cms(db.Model):
     date_to_post = db.Column(db.Date, nullable=True)
     date_to_end = db.Column(db.Date, nullable=True)
     archive = db.Column(db.Boolean, default=False)
+    status = db.Column(db.Enum(status), default=status.PENDING)
 
 class AccessControl(db.Model):
     __tablename__ = 'access_control'

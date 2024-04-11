@@ -10,8 +10,7 @@ class PaymentResource(Resource):
             if payment:
                 return{
                     'payment_id': payment.payment_id,
-                    'unit_id': payment.unit_id,
-                    'user_id': payment.user_id,
+                    'lease_agreement_id': payment.lease_agreement_id,
                     'payment_date': payment.payment_date.isoformat() if payment.payment_date else None,
                     'amount': payment.amount,
                     'payment_method': payment.payment_method,
@@ -25,8 +24,7 @@ class PaymentResource(Resource):
             payments = Payment.query.all()
             return [{
                 'payment_id': payment.payment_id,
-                'unit_id': payment.unit_id,
-                'user_id': payment.user_id,
+                'lease_agreement_id': payment.lease_agreement_id,
                 'payment_date': payment.payment_date.isoformat() if payment.payment_date else None,
                 'amount': payment.amount,
                 'payment_method': payment.payment_method,

@@ -72,19 +72,16 @@ class UserResource(Resource):
                         'monthly_rent': agreement.monthly_rent,
                         'security_deposit': agreement.security_deposit,
                         'remaining_balance': agreement.remaining_balance,
-                        'tenant_info': self.get_tenant_info(agreement.tenant)
+                        'tenant_info': self.get_tenant_info(agreement.tenant),
+                        'payments': [{
+                            'payment_id': payment.payment_id,
+                            'payment_date': payment.payment_date.isoformat() if payment.payment_date else None,
+                            'amount': payment.amount,
+                            'payment_method': payment.payment_method,
+                            'reference_number': payment.reference_number,
+                            'status': payment.status.name
+                        } for payment in agreement.payments]
                     } for agreement in user.lease_agreements]
-
-                if user.payments:
-                    user_data['payments'] = [{
-                        'payment_id': payment.payment_id,
-                        'unit_id': payment.unit_id,
-                        'payment_date': payment.payment_date.isoformat() if payment.payment_date else None,
-                        'amount': payment.amount,
-                        'payment_method': payment.payment_method,
-                        'reference_number': payment.reference_number,
-                        'status': payment.status.name
-                    } for payment in user.payments]
 
                 if user.cms:
                     user_data['cms'] = [{
@@ -97,7 +94,8 @@ class UserResource(Resource):
                         'time_posted': cms.time_posted.isoformat() if cms.time_posted else None,
                         'date_to_post': cms.date_to_post.isoformat() if cms.date_to_post else None,
                         'date_to_end': cms.date_to_end.isoformat() if cms.date_to_end else None,
-                        'archive': cms.archive
+                        'archive': cms.archive,
+                        'status': cms.status.name
                     } for cms in user.cms]
 
                 return user_data
@@ -152,19 +150,16 @@ class UserResource(Resource):
                         'monthly_rent': agreement.monthly_rent,
                         'security_deposit': agreement.security_deposit,
                         'remaining_balance': agreement.remaining_balance,
-                        'tenant_info': self.get_tenant_info(agreement.tenant)
+                        'tenant_info': self.get_tenant_info(agreement.tenant),
+                        'payments': [{
+                            'payment_id': payment.payment_id,
+                            'payment_date': payment.payment_date.isoformat() if payment.payment_date else None,
+                            'amount': payment.amount,
+                            'payment_method': payment.payment_method,
+                            'reference_number': payment.reference_number,
+                            'status': payment.status.name
+                        } for payment in agreement.payments]
                     } for agreement in user.lease_agreements]
-
-                if user.payments:
-                    user_data['payments'] = [{
-                        'payment_id': payment.payment_id,
-                        'unit_id': payment.unit_id,
-                        'payment_date': payment.payment_date,
-                        'amount': payment.amount,
-                        'payment_date': payment.payment_date.isoformat() if payment.payment_date else None,
-                        'reference_number': payment.reference_number,
-                        'status': payment.status.name
-                    } for payment in user.payments]
 
                 if user.cms:
                     user_data['cms'] = [{
@@ -177,7 +172,8 @@ class UserResource(Resource):
                         'time_posted': cms.time_posted.isoformat() if cms.time_posted else None,
                         'date_to_post': cms.date_to_post.isoformat() if cms.date_to_post else None,
                         'date_to_end': cms.date_to_end.isoformat() if cms.date_to_end else None,
-                        'archive': cms.archive
+                        'archive': cms.archive,
+                        'status': cms.status.name
                     } for cms in user.cms]
                    
                 users_data.append(user_data)

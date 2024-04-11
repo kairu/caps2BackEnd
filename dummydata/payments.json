@@ -1,8 +1,7 @@
 [
     {
         "payment_id": 1,
-        "unit_id": 1,
-        "user_id": 1,
+        "lease_agreement_id": 1,
         "payment_date": "2012-04-10",
         "amount": 42822048,
         "payment_method": null,
@@ -12,8 +11,7 @@
     },
     {
         "payment_id": 2,
-        "unit_id": 2,
-        "user_id": 2,
+        "lease_agreement_id": 2,
         "payment_date": "1970-04-03",
         "amount": 2753677,
         "payment_method": null,
@@ -23,8 +21,7 @@
     },
     {
         "payment_id": 3,
-        "unit_id": 3,
-        "user_id": 3,
+        "lease_agreement_id": 3,
         "payment_date": "2003-06-22",
         "amount": 40277019,
         "payment_method": null,
@@ -34,8 +31,7 @@
     },
     {
         "payment_id": 4,
-        "unit_id": 4,
-        "user_id": 4,
+        "lease_agreement_id": 4,
         "payment_date": "1979-01-24",
         "amount": 90795367,
         "payment_method": null,
@@ -45,8 +41,7 @@
     },
     {
         "payment_id": 5,
-        "unit_id": 5,
-        "user_id": 5,
+        "lease_agreement_id": 5,
         "payment_date": "1988-03-16",
         "amount": 5805735,
         "payment_method": null,
@@ -56,8 +51,7 @@
     },
     {
         "payment_id": 6,
-        "unit_id": 6,
-        "user_id": 6,
+        "lease_agreement_id": 6,
         "payment_date": "2019-07-03",
         "amount": 5763449,
         "payment_method": null,
@@ -67,8 +61,7 @@
     },
     {
         "payment_id": 7,
-        "unit_id": 7,
-        "user_id": 7,
+        "lease_agreement_id": 7,
         "payment_date": "2005-02-08",
         "amount": 43190428,
         "payment_method": null,
@@ -78,8 +71,7 @@
     },
     {
         "payment_id": 8,
-        "unit_id": 8,
-        "user_id": 8,
+        "lease_agreement_id": 8,
         "payment_date": "2011-10-03",
         "amount": 58300613,
         "payment_method": null,
@@ -89,8 +81,7 @@
     },
     {
         "payment_id": 9,
-        "unit_id": 9,
-        "user_id": 9,
+        "lease_agreement_id": 9,
         "payment_date": "1983-10-14",
         "amount": 43058860,
         "payment_method": null,
@@ -100,8 +91,7 @@
     },
     {
         "payment_id": 10,
-        "unit_id": 10,
-        "user_id": 10,
+        "lease_agreement_id": 10,
         "payment_date": "1995-07-28",
         "amount": 24583683,
         "payment_method": null,
@@ -111,8 +101,7 @@
     },
     {
         "payment_id": 11,
-        "unit_id": 11,
-        "user_id": 11,
+        "lease_agreement_id": 11,
         "payment_date": "1983-04-16",
         "amount": 27615514,
         "payment_method": null,
@@ -122,8 +111,7 @@
     },
     {
         "payment_id": 12,
-        "unit_id": 12,
-        "user_id": 12,
+        "lease_agreement_id": 12,
         "payment_date": "2007-09-04",
         "amount": 31815430,
         "payment_method": null,
@@ -133,8 +121,7 @@
     },
     {
         "payment_id": 13,
-        "unit_id": 13,
-        "user_id": 13,
+        "lease_agreement_id": 13,
         "payment_date": "1986-02-02",
         "amount": 51582484,
         "payment_method": null,
@@ -144,8 +131,7 @@
     },
     {
         "payment_id": 14,
-        "unit_id": 14,
-        "user_id": 14,
+        "lease_agreement_id": 14,
         "payment_date": "2006-09-14",
         "amount": 67165439,
         "payment_method": null,
@@ -155,8 +141,7 @@
     },
     {
         "payment_id": 15,
-        "unit_id": 15,
-        "user_id": 15,
+        "lease_agreement_id": 15,
         "payment_date": "1996-04-15",
         "amount": 95010933,
         "payment_method": null,
@@ -166,8 +151,7 @@
     },
     {
         "payment_id": 16,
-        "unit_id": 16,
-        "user_id": 16,
+        "lease_agreement_id": 16,
         "payment_date": "2002-12-17",
         "amount": 45369796,
         "payment_method": null,
@@ -177,8 +161,7 @@
     },
     {
         "payment_id": 17,
-        "unit_id": 17,
-        "user_id": 17,
+        "lease_agreement_id": 17,
         "payment_date": "2012-04-05",
         "amount": 82035812,
         "payment_method": null,
@@ -188,8 +171,7 @@
     },
     {
         "payment_id": 18,
-        "unit_id": 18,
-        "user_id": 18,
+        "lease_agreement_id": 18,
         "payment_date": "1995-05-17",
         "amount": 58301489,
         "payment_method": null,
@@ -199,8 +181,7 @@
     },
     {
         "payment_id": 19,
-        "unit_id": 19,
-        "user_id": 19,
+        "lease_agreement_id": 19,
         "payment_date": "2020-10-27",
         "amount": 55234782,
         "payment_method": null,
@@ -210,8 +191,7 @@
     },
     {
         "payment_id": 20,
-        "unit_id": 20,
-        "user_id": 20,
+        "lease_agreement_id": 20,
         "payment_date": "1989-05-27",
         "amount": 17202362,
         "payment_method": null,
@@ -221,8 +201,7 @@
     },
     {
         "payment_id": 21,
-        "unit_id": 21,
-        "user_id": 21,
+        "lease_agreement_id": 21,
         "payment_date": "2006-07-09",
         "amount": 60144882,
         "payment_method": null,
@@ -232,8 +211,7 @@
     },
     {
         "payment_id": 22,
-        "unit_id": 22,
-        "user_id": 22,
+        "lease_agreement_id": 22,
         "payment_date": "1997-11-04",
         "amount": 42078258,
         "payment_method": null,
@@ -243,8 +221,7 @@
     },
     {
         "payment_id": 23,
-        "unit_id": 23,
-        "user_id": 23,
+        "lease_agreement_id": 23,
         "payment_date": "2016-05-24",
         "amount": 58924327,
         "payment_method": null,
@@ -254,8 +231,7 @@
     },
     {
         "payment_id": 24,
-        "unit_id": 24,
-        "user_id": 24,
+        "lease_agreement_id": 24,
         "payment_date": "2001-12-24",
         "amount": 71250357,
         "payment_method": null,
@@ -265,8 +241,7 @@
     },
     {
         "payment_id": 25,
-        "unit_id": 25,
-        "user_id": 25,
+        "lease_agreement_id": 25,
         "payment_date": "2001-01-08",
         "amount": 29037238,
         "payment_method": null,
@@ -276,8 +251,7 @@
     },
     {
         "payment_id": 26,
-        "unit_id": 26,
-        "user_id": 26,
+        "lease_agreement_id": 26,
         "payment_date": "2018-10-09",
         "amount": 40246665,
         "payment_method": null,
@@ -287,8 +261,7 @@
     },
     {
         "payment_id": 27,
-        "unit_id": 27,
-        "user_id": 27,
+        "lease_agreement_id": 27,
         "payment_date": "1986-07-09",
         "amount": 7537661,
         "payment_method": null,
@@ -298,8 +271,7 @@
     },
     {
         "payment_id": 28,
-        "unit_id": 28,
-        "user_id": 28,
+        "lease_agreement_id": 28,
         "payment_date": "1994-11-13",
         "amount": 95078417,
         "payment_method": null,
@@ -309,8 +281,7 @@
     },
     {
         "payment_id": 29,
-        "unit_id": 29,
-        "user_id": 29,
+        "lease_agreement_id": 29,
         "payment_date": "1994-02-06",
         "amount": 74514113,
         "payment_method": null,
@@ -320,8 +291,7 @@
     },
     {
         "payment_id": 30,
-        "unit_id": 30,
-        "user_id": 30,
+        "lease_agreement_id": 30,
         "payment_date": "2016-01-18",
         "amount": 36169551,
         "payment_method": null,
@@ -331,8 +301,7 @@
     },
     {
         "payment_id": 31,
-        "unit_id": 31,
-        "user_id": 31,
+        "lease_agreement_id": 1,
         "payment_date": "2010-09-09",
         "amount": 26204768,
         "payment_method": null,
@@ -342,8 +311,7 @@
     },
     {
         "payment_id": 32,
-        "unit_id": 32,
-        "user_id": 32,
+        "lease_agreement_id": 2,
         "payment_date": "2019-04-16",
         "amount": 34429029,
         "payment_method": null,
@@ -353,8 +321,7 @@
     },
     {
         "payment_id": 33,
-        "unit_id": 33,
-        "user_id": 33,
+        "lease_agreement_id": 3,
         "payment_date": "1978-03-14",
         "amount": 10471427,
         "payment_method": null,
@@ -364,8 +331,7 @@
     },
     {
         "payment_id": 34,
-        "unit_id": 34,
-        "user_id": 34,
+        "lease_agreement_id": 4,
         "payment_date": "2015-09-27",
         "amount": 33585506,
         "payment_method": null,
@@ -375,8 +341,7 @@
     },
     {
         "payment_id": 35,
-        "unit_id": 35,
-        "user_id": 35,
+        "lease_agreement_id": 5,
         "payment_date": "2017-01-07",
         "amount": 15191821,
         "payment_method": null,
@@ -386,8 +351,7 @@
     },
     {
         "payment_id": 36,
-        "unit_id": 36,
-        "user_id": 36,
+        "lease_agreement_id": 6,
         "payment_date": "1988-01-31",
         "amount": 29375245,
         "payment_method": null,
@@ -397,8 +361,7 @@
     },
     {
         "payment_id": 37,
-        "unit_id": 37,
-        "user_id": 37,
+        "lease_agreement_id": 7,
         "payment_date": "1982-08-17",
         "amount": 95875686,
         "payment_method": null,
@@ -408,8 +371,7 @@
     },
     {
         "payment_id": 38,
-        "unit_id": 38,
-        "user_id": 38,
+        "lease_agreement_id": 8,
         "payment_date": "2016-03-31",
         "amount": 23009449,
         "payment_method": null,
@@ -419,8 +381,7 @@
     },
     {
         "payment_id": 39,
-        "unit_id": 39,
-        "user_id": 39,
+        "lease_agreement_id": 9,
         "payment_date": "2000-03-14",
         "amount": 96702255,
         "payment_method": null,
@@ -430,8 +391,7 @@
     },
     {
         "payment_id": 40,
-        "unit_id": 40,
-        "user_id": 40,
+        "lease_agreement_id": 10,
         "payment_date": "1998-12-03",
         "amount": 59563336,
         "payment_method": null,
@@ -441,8 +401,7 @@
     },
     {
         "payment_id": 41,
-        "unit_id": 41,
-        "user_id": 41,
+        "lease_agreement_id": 11,
         "payment_date": "1971-01-22",
         "amount": 96436559,
         "payment_method": null,
@@ -452,8 +411,7 @@
     },
     {
         "payment_id": 42,
-        "unit_id": 42,
-        "user_id": 42,
+        "lease_agreement_id": 22,
         "payment_date": "2001-09-04",
         "amount": 99155832,
         "payment_method": null,
@@ -463,8 +421,7 @@
     },
     {
         "payment_id": 43,
-        "unit_id": 43,
-        "user_id": 43,
+        "lease_agreement_id": 13,
         "payment_date": "2010-09-09",
         "amount": 2915425,
         "payment_method": null,
@@ -474,8 +431,7 @@
     },
     {
         "payment_id": 44,
-        "unit_id": 44,
-        "user_id": 44,
+        "lease_agreement_id": 14,
         "payment_date": "1987-10-21",
         "amount": 93443944,
         "payment_method": null,
@@ -485,8 +441,7 @@
     },
     {
         "payment_id": 45,
-        "unit_id": 45,
-        "user_id": 45,
+        "lease_agreement_id": 15,
         "payment_date": "1990-03-17",
         "amount": 74111720,
         "payment_method": null,
@@ -496,8 +451,7 @@
     },
     {
         "payment_id": 46,
-        "unit_id": 46,
-        "user_id": 46,
+        "lease_agreement_id": 16,
         "payment_date": "1993-12-04",
         "amount": 73301431,
         "payment_method": null,
@@ -507,8 +461,7 @@
     },
     {
         "payment_id": 47,
-        "unit_id": 47,
-        "user_id": 47,
+        "lease_agreement_id": 17,
         "payment_date": "1986-06-22",
         "amount": 90858659,
         "payment_method": null,
@@ -518,8 +471,7 @@
     },
     {
         "payment_id": 48,
-        "unit_id": 48,
-        "user_id": 48,
+        "lease_agreement_id": 18,
         "payment_date": "2004-03-13",
         "amount": 94726572,
         "payment_method": null,
@@ -529,8 +481,7 @@
     },
     {
         "payment_id": 49,
-        "unit_id": 49,
-        "user_id": 49,
+        "lease_agreement_id": 19,
         "payment_date": "1974-06-15",
         "amount": 21382243,
         "payment_method": null,
@@ -540,8 +491,7 @@
     },
     {
         "payment_id": 50,
-        "unit_id": 50,
-        "user_id": 50,
+        "lease_agreement_id": 20,
         "payment_date": "1995-02-16",
         "amount": 21921444,
         "payment_method": null,
