@@ -23,12 +23,14 @@ api = Api(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mariadb+pymysql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['BULLETIN_IMAGES'] = 'static/bulletin-board'
+app.config['OCR_RECEIPTS'] = 'static/ocr-receipts'
+app.config['CONTRACTS'] ='static/contracts'
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 # Import your models here to avoid circular import
-from models import User, Unit, Tenant, LeaseAgreement, Payment, Bill, Cms, AccessControl
+from models import User, Unit, LeaseAgreement, Payment, Bill, Cms, AccessControl
 
 scheduler = sched.scheduler(time.time, time.sleep)
 
@@ -47,7 +49,6 @@ def check_cms_archive():
 
 # Schedule recurring checks  
 def schedule_checks():
-    # scheduler.enter(86400, 1, check_cms_archive)
     scheduler.enter(time.mktime(datetime.now().replace(hour=0, minute=0, second=0).timetuple()) - time.time(), 1, check_cms_archive)
     scheduler.run()
 
@@ -79,7 +80,7 @@ def startup():
     models = [
         {'model': User, 'filter_key': 'user_id'},
         {'model': Cms, 'filter_key': 'cms_id'},
-        {'model': Tenant, 'filter_key': 'tenant_id'},
+        # {'model': Tenant, 'filter_key': 'tenant_id'},
         {'model': Unit, 'filter_key': 'unit_id'},
         {'model': Bill, 'filter_key': 'bill_id'},
         {'model': LeaseAgreement, 'filter_key': 'lease_agreement_id'},
