@@ -16,7 +16,7 @@ class User(db.Model):
 
     unit = db.relationship("Unit", backref="users")
     cms = db.relationship("Cms", backref="users")
-
+    
 class Unit(db.Model):
     __tablename__ = 'units'
 
@@ -30,17 +30,6 @@ class Unit(db.Model):
     number_of_bathrooms = db.Column(db.Integer, nullable=True)
     parking_slot = db.Column(db.String(20), nullable=True)
     remaining_balance = db.Column(db.Integer, nullable=True)
-    
-class Tenant(db.Model):
-    __tablename__ = 'tenants'
-
-    tenant_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
-    move_in_date = db.Column(db.Date, nullable=True)
-    move_out_date = db.Column(db.Date, nullable=True)
-
-    user = db.relationship("User", backref="tenants")
-    lease_agreements = db.relationship("LeaseAgreement", backref="tenant")
 
 class LeaseAgreement(db.Model):
     __tablename__ = 'lease_agreements'
@@ -48,7 +37,7 @@ class LeaseAgreement(db.Model):
     lease_agreement_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     unit_id = db.Column(db.Integer, db.ForeignKey('units.unit_id'), nullable=False)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
-    tenant_id = db.Column(db.Integer, db.ForeignKey('tenants.tenant_id'), nullable=False)
+    tenant_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     contract = db.Column(db.String(255), nullable=True)
     start_date = db.Column(db.Date, nullable=False)
     end_date = db.Column(db.Date, nullable=False)
@@ -79,11 +68,13 @@ class Bill(db.Model):
     bill_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     unit_id = db.Column(db.Integer, db.ForeignKey('units.unit_id'), nullable=False)
     month = db.Column(db.Enum(month), nullable=False)
+    soa_id = db.Column(db.Text, nullable=True)
     due_date = db.Column(db.Date, nullable=False)
     total_amount = db.Column(db.Integer, nullable=False)
     breakdown = db.Column(db.Text, nullable=True)
     bill_type = db.Column(db.Enum(bill_type), nullable=True)
     payment_method = db.Column(db.String(50), nullable=True)
+    image_path = db.Column(db.String(255), nullable=True) 
     status = db.Column(db.Enum(status), default=status.PENDING)
 
     unit = db.relationship("Unit", backref="bills")
