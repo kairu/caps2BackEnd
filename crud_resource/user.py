@@ -6,16 +6,19 @@ from sqlalchemy.exc import IntegrityError
 
 class UserResource(Resource):
     
-    def get_tenant_info(self, tenant):
-        return {
-            'user_id': tenant.user_id,
-            'first_name': tenant.user.first_name,
-            'last_name': tenant.user.last_name,
-            'email': tenant.user.email,
-            'mobile_number': tenant.user.mobile_number,
-            'user_type': tenant.user.user_type.name,
-            'is_validated': tenant.user.is_validated
-        }
+    def get_tenant_info(self, tenant_id):
+        tenant_user = User.query.get(tenant_id)
+        if tenant_user:
+            return {
+                'user_id': tenant_user.user_id,
+                'first_name': tenant_user.first_name,
+                'last_name': tenant_user.last_name,
+                'email': tenant_user.email,
+                'mobile_number': tenant_user.mobile_number,
+                'user_type': tenant_user.user_type.name,
+                'is_validated': tenant_user.is_validated
+            }
+        return None
         
     # Get Data
     def get(self, email_or_user_id=None):
@@ -52,6 +55,7 @@ class UserResource(Resource):
                         'bills': [{
                             'bill_id': bill.bill_id,
                             'month': bill.month.name,
+                            'soa_id': bill.soa_id,
                             'due_date': bill.due_date.isoformat() if bill.due_date else None,
                             'total_amount': bill.total_amount,
                             'breakdown': bill.breakdown,
@@ -72,7 +76,7 @@ class UserResource(Resource):
                         'monthly_rent': agreement.monthly_rent,
                         'security_deposit': agreement.security_deposit,
                         'remaining_balance': agreement.remaining_balance,
-                        'tenant_info': self.get_tenant_info(agreement.tenant),
+                        'tenant_info': self.get_tenant_info(agreement.tenant_id),
                         'payments': [{
                             'payment_id': payment.payment_id,
                             'payment_date': payment.payment_date.isoformat() if payment.payment_date else None,
@@ -131,6 +135,7 @@ class UserResource(Resource):
                         'bills': [{
                             'bill_id': bill.bill_id,
                             'month': bill.month.name,
+                            'soa_id': bill.soa_id,
                             'due_date': bill.due_date.isoformat() if bill.due_date else None,
                             'total_amount': bill.total_amount,
                             'breakdown': bill.breakdown,
@@ -150,7 +155,7 @@ class UserResource(Resource):
                         'monthly_rent': agreement.monthly_rent,
                         'security_deposit': agreement.security_deposit,
                         'remaining_balance': agreement.remaining_balance,
-                        'tenant_info': self.get_tenant_info(agreement.tenant),
+                        'tenant_info': self.get_tenant_info(agreement.tenant_id),
                         'payments': [{
                             'payment_id': payment.payment_id,
                             'payment_date': payment.payment_date.isoformat() if payment.payment_date else None,
@@ -209,9 +214,12 @@ class UserResource(Resource):
             return {'error': 'Error creating user'}, 500
 
     # Editing/Updating Data
-    def put(self, email=None):
-        if email:
-            user = User.query.filter(User.email == email).first()
+    def put(self, email_or_user_id=None):
+        if email_or_user_id:
+            if re.match(r'^[\w\.-]+@[\w\.-]+$', email_or_user_id):
+                user = User.query.filter(User.email == email_or_user_id).first()
+            else:
+                user = User.query.get(email_or_user_id)
             if user:
                 data = request.get_json()
                 user.first_name = data['first_name']
