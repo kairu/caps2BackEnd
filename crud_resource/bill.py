@@ -12,10 +12,13 @@ class BillResource(Resource):
                     'bill_id': bill.bill_id,
                     'unit_id': bill.unit_id,
                     'month': bill.month.name,
+                    'soa_id': bill.soa_id,
                     'due_date': bill.due_date.isoformat() if bill.due_date else None,
                     'total_amount': bill.total_amount,
                     'breakdown': bill.breakdown,
                     'bill_type': bill.bill_type,
+                    'payment_method': bill.payment_method,
+                    'image_path': bill.image_path,
                     'status': bill.status.name
                 }
             else:
@@ -26,11 +29,13 @@ class BillResource(Resource):
                 'bill_id': bill.bill_id,
                 'unit_id': bill.unit_id,
                 'month': bill.month.name,
+                'soa_id': bill.soa_id,
                 'due_date': bill.due_date.isoformat() if bill.due_date else None,
                 'total_amount': bill.total_amount,
                 'breakdown': bill.breakdown,
                 'bill_type': bill.bill_type,
                 'payment_method': bill.payment_method,
+                'image_path': bill.image_path,
                 'status': bill.status.name
             } for bill in bills]
         
@@ -60,11 +65,13 @@ class BillResource(Resource):
             data = request.get_json()
             bill.unit_id = data['unit_id']
             bill.month = data['month']
+            bill.soa_id = data['soa_id']
             bill.due_date = data['due_date']
             bill.total_amount = data['total_amount']
             bill.breakdown = data['breakdown']
             bill.bill_type = data['bill_type']
             bill.payment_method = data['payment_method']
+            bill.image_path = data['image_path']
             bill.status = data['status']
             db.session.commit()
             return {'message': 'Bill updated successfully'}
