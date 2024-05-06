@@ -25,6 +25,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['BULLETIN_IMAGES'] = 'static/bulletin-board'
 app.config['OCR_RECEIPTS'] = 'static/ocr-receipts'
 app.config['CONTRACTS'] ='static/contracts'
+app.config['TEMP'] = 'static/TMP'
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)

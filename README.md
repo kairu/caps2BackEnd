@@ -21,6 +21,10 @@ flask-cors\
 PyMySQL\
 SQLAlchemy\
 sqlalchemy_utils\
+paddlepaddle\
+paddleocr\
+Pillow\
+opencv-python\
 \
 avidatrack\
 password
