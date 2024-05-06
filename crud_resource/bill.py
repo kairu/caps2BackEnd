@@ -11,7 +11,7 @@ class BillResource(Resource):
                 return{
                     'bill_id': bill.bill_id,
                     'unit_id': bill.unit_id,
-                    'month': bill.month.name,
+                    'month': bill.month.name if bill.month else None,
                     'soa_id': bill.soa_id,
                     'due_date': bill.due_date.isoformat() if bill.due_date else None,
                     'total_amount': bill.total_amount,
@@ -28,7 +28,7 @@ class BillResource(Resource):
             return [{
                 'bill_id': bill.bill_id,
                 'unit_id': bill.unit_id,
-                'month': bill.month.name,
+                'month': bill.month.name if bill.month else None,
                 'soa_id': bill.soa_id,
                 'due_date': bill.due_date.isoformat() if bill.due_date else None,
                 'total_amount': bill.total_amount,
@@ -45,9 +45,9 @@ class BillResource(Resource):
             data = request.get_json()
 
             # Check if bill already exsists
-            existing_bill = Bill.query.filter_by(unit_id=data['unit_id'], month=data['month'],total_amount=data['total_amount']).first()
-            if existing_bill:
-                return{'error': 'Bill already exists'},409
+            # existing_bill = Bill.query.filter_by(unit_id=data['unit_id'], month=data['month'],total_amount=data['total_amount']).first()
+            # if existing_bill:
+            #     return{'error': 'Bill already exists'},409
             
             new_bill = Bill(**data)
             db.session.add(new_bill)
@@ -63,16 +63,26 @@ class BillResource(Resource):
         bill = Bill.query.get(bill_id)
         if bill:
             data = request.get_json()
-            bill.unit_id = data['unit_id']
-            bill.month = data['month']
-            bill.soa_id = data['soa_id']
-            bill.due_date = data['due_date']
-            bill.total_amount = data['total_amount']
-            bill.breakdown = data['breakdown']
-            bill.bill_type = data['bill_type']
-            bill.payment_method = data['payment_method']
-            bill.image_path = data['image_path']
-            bill.status = data['status']
+            if 'unit_id' in data:
+                bill.unit_id = data['unit_id']
+            if 'month' in data:
+                bill.month = data['month']
+            if 'soa_id' in data:
+                bill.soa_id = data['soa_id']
+            if 'due_date' in data:
+                bill.due_date = data['due_date']
+            if 'total_amount' in data:
+                bill.total_amount = data['total_amount']
+            if 'breakdown' in data:
+                bill.breakdown = data['breakdown']
+            if 'bill_type' in data:
+                bill.bill_type = data['bill_type']
+            if 'payment_method' in data:
+                bill.payment_method = data['payment_method']
+            if 'image_path' in data:
+                bill.image_path = data['image_path']
+            if 'status' in data:
+                bill.status = data['status']
             db.session.commit()
             return {'message': 'Bill updated successfully'}
         else:
