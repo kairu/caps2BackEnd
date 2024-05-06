@@ -57,7 +57,7 @@ def store_bulletin_image():
             file.save(filepath)
             return {'file': hash_filename}, 200
         
-@app.route('/contract/', methods=['POST'])
+@app.route('/contract', methods=['POST'])
 def store_contract_image():
     if app.config['CONTRACTS']:
         if request.method == 'POST':

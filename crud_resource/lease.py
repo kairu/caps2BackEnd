@@ -62,15 +62,24 @@ class LeaseAgreementResource(Resource):
         lease = LeaseAgreement.query.get(lease_agreement_id)
         if lease:
             data = request.get_json()
-            lease.unit_id = data['unit_id']
-            lease.owner_id = data['owner_id']
-            lease.tenant_id = data['tenant_id']
-            lease.contract = data['contract']
-            lease.start_date = data['start_date']
-            lease.end_date = data['end_date']
-            lease.monthly_rent = data['monthly_rent']
-            lease.security_deposit = data['security_deposit']
-            lease.remaining_balance = data['remaining_balance']
+            if 'unit_id' in data:
+                lease.unit_id = data['unit_id']
+            if 'owner_id' in data:
+                lease.owner_id = data['owner_id']
+            if 'tenant_id' in data:
+                lease.tenant_id = data['tenant_id']
+            if 'contract' in data:
+                lease.contract = data['contract']
+            if 'start_date' in data:
+                lease.start_date = data['start_date']
+            if 'end_date' in data:
+                lease.end_date = data['end_date']
+            if 'monthly_rent' in data:
+                lease.monthly_rent = data['monthly_rent']
+            if 'security_deposit' in data:
+                lease.security_deposit = data['security_deposit']
+            if 'remaining_balance' in data:
+                lease.remaining_balance = data['remaining_balance']
             db.session.commit()
             return{ 'message': 'Lease Agreement updated successfully'}
         else:

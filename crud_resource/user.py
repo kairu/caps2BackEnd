@@ -74,29 +74,7 @@ class UserResource(Resource):
                         })
                     
                     user_data['units'].append(unit_data)
-                # if user.unit:
-                #     user_data['units'] = [{
-                #         'unit_id': unit.unit_id,
-                #         'tower_number': unit.tower_number,
-                #         'floor_number': unit.floor_number,
-                #         'unit_number': unit.unit_number,
-                #         'sq_foot': unit.sq_foot,
-                #         'number_of_bedrooms': unit.number_of_bedrooms,
-                #         'number_of_bathrooms': unit.number_of_bathrooms,
-                #         'parking_slot': unit.parking_slot,
-                #         'remaining_balance': unit.remaining_balance,
-                #         'bills': [{
-                #             'bill_id': bill.bill_id,
-                #             'month': bill.month.name if bill.month else None,
-                #             'soa_id': bill.soa_id,
-                #             'due_date': bill.due_date.isoformat() if bill.due_date else None,
-                #             'total_amount': bill.total_amount,
-                #             'breakdown': bill.breakdown,
-                #             'bill_type': bill.bill_type.name,
-                #             'payment_method': bill.payment_method,
-                #             'status': bill.status.name
-                #         } for bill in unit.bills]
-                #     } for unit in user.unit]
+
 
                 if user.lease_agreements:
                     user_data['lease_agreements'] = [{
@@ -187,29 +165,6 @@ class UserResource(Resource):
                         })
                     
                     user_data['units'].append(unit_data)
-                # if user.unit:
-                #     user_data['units'] = [{
-                #         'unit_id': unit.unit_id,
-                #         'tower_number': unit.tower_number,
-                #         'floor_number': unit.floor_number,
-                #         'unit_number': unit.unit_number,
-                #         'sq_foot': unit.sq_foot,
-                #         'number_of_bedrooms': unit.number_of_bedrooms,
-                #         'number_of_bathrooms': unit.number_of_bathrooms,
-                #         'parking_slot': unit.parking_slot,
-                #         'remaining_balance': unit.remaining_balance,
-                #         'bills': [{
-                #             'bill_id': bill.bill_id,
-                #             'month': bill.month.name if bill.month else None,
-                #             'soa_id': bill.soa_id,
-                #             'due_date': bill.due_date.isoformat() if bill.due_date else None,
-                #             'total_amount': bill.total_amount,
-                #             'breakdown': bill.breakdown,
-                #             'bill_type': bill.bill_type.name,
-                #             'payment_method': bill.payment_method,
-                #             'status': bill.status.name
-                #         } for bill in unit.bills]
-                #     } for unit in user.unit]
 
                 if user.lease_agreements:
                     user_data['lease_agreements'] = [{
