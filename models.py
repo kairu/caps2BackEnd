@@ -1,6 +1,5 @@
 from creation import db
 from enums import user_type, status, month, Cms_Enum, bill_type
-from sqlalchemy import CheckConstraint
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -67,10 +66,10 @@ class Bill(db.Model):
 
     bill_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     unit_id = db.Column(db.Integer, db.ForeignKey('units.unit_id'), nullable=False)
-    month = db.Column(db.Enum(month), nullable=False)
+    month = db.Column(db.Enum(month), nullable=True)
     soa_id = db.Column(db.Text, nullable=True)
     due_date = db.Column(db.Date, nullable=False)
-    total_amount = db.Column(db.Integer, nullable=False)
+    total_amount = db.Column(db.Float, nullable=False)
     breakdown = db.Column(db.Text, nullable=True)
     bill_type = db.Column(db.Enum(bill_type), nullable=True)
     payment_method = db.Column(db.String(50), nullable=True)
