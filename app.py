@@ -11,7 +11,7 @@ import requests
 api.add_resource(UserResource, '/user', '/user/<string:email_or_user_id>')
 api.add_resource(UnitResource, '/unit', '/unit/<int:unit_id>')
 # api.add_resource(TenantResource, '/tenant', '/tenant/<int:tenant_id>')
-api.add_resource(LeaseAgreementResource, '/lease', '/lease/<int:lease_agreement_id>')
+api.add_resource(LeaseAgreementResource, '/lease', '/lease/<string:lease_id_or_tenant_id>')
 api.add_resource(PaymentResource, '/payment', '/payment/<int:payment_id>')
 api.add_resource(BillResource, '/bill', '/bill/<int:bill_id>')
 api.add_resource(CmsResource, '/cms', '/cms/<int:cms_id>')
@@ -50,24 +50,24 @@ def store_bulletin_image():
     if app.config['BULLETIN_IMAGES']:
         if request.method == 'POST':
             file = request.files['file']
-            hash_filename = hash_filename(file.filename)
-            filepath = f'{app.config["BULLETIN_IMAGES"]}/{hash_filename}'
+            hashed_filename = hash_filename(file.filename)
+            filepath = f'{app.config["BULLETIN_IMAGES"]}/{hashed_filename}'
             if os.path.exists(filepath):
                 os.remove(filepath)
             file.save(filepath)
-            return {'file': hash_filename}, 200
+            return {'file': hashed_filename}, 200
         
 @app.route('/contract', methods=['POST'])
 def store_contract_image():
     if app.config['CONTRACTS']:
         if request.method == 'POST':
             file = request.files['file']
-            hash_filename = hash_filename(file.filename)
-            filepath = f'{app.config["CONTRACTS"]}/{hash_filename}'
+            hashed_filename = hash_filename(file.filename)
+            filepath = f'{app.config["CONTRACTS"]}/{hashed_filename}'
             if os.path.exists(filepath):
                 os.remove(filepath)
             file.save(filepath)
-            return {'file': hash_filename}, 200
+            return {'file': hashed_filename}, 200
 
 import json
 @app.route('/ocr', methods=['POST'])

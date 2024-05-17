@@ -4,9 +4,14 @@ from flask import request
 from sqlalchemy.exc import IntegrityError
 
 class LeaseAgreementResource(Resource):
-    def get(self, lease_id=None):
-        if lease_id:
-            lease = LeaseAgreement.query.get(lease_id)
+    def get(self, lease_id_or_tenant_id=None):
+        if lease_id_or_tenant_id:
+            lease = None
+            if lease_id_or_tenant_id.isdigit():
+                lease = LeaseAgreement.query.get(lease_id_or_tenant_id)
+            else:
+                lease_id_or_tenant_id = int(lease_id_or_tenant_id.replace('TENANT', '').strip())
+                lease = LeaseAgreement.query.filter_by(tenant_id=lease_id_or_tenant_id).first()
             if lease:
                 return{
                     'lease_agreement_id': lease.lease_agreement_id,
@@ -58,8 +63,8 @@ class LeaseAgreementResource(Resource):
             return{'error': 'Error creating lease'}, 500
         
     # Edit Data
-    def put(self, lease_agreement_id):
-        lease = LeaseAgreement.query.get(lease_agreement_id)
+    def put(self, lease_id_or_tenant_id):
+        lease = LeaseAgreement.query.get(lease_id_or_tenant_id)
         if lease:
             data = request.get_json()
             if 'unit_id' in data:

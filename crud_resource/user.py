@@ -90,6 +90,7 @@ class UserResource(Resource):
                         'tenant_info': self.get_tenant_info(agreement.tenant_id),
                         'payments': [{
                             'payment_id': payment.payment_id,
+                            'lease_agreement_id': agreement.lease_agreement_id,
                             'payment_date': payment.payment_date.isoformat() if payment.payment_date else None,
                             'amount': payment.amount,
                             'payment_method': payment.payment_method,
