@@ -4,11 +4,16 @@ from flask import request
 from sqlalchemy.exc import IntegrityError
 
 class PaymentResource(Resource):
-    def get(self, payment_id=None):
-        if payment_id:
-            payment = Payment.query.get(payment_id)
-            if payment:
-                return{
+    def get(self, agreement_or_payment_id=None):
+        if agreement_or_payment_id:
+            if agreement_or_payment_id.isdigit():
+                payments = Payment.query.get(agreement_or_payment_id)
+                payments = [payments] if payments else []
+            else:
+                agreement_or_payment_id = int(agreement_or_payment_id.replace('LEASE', '').strip())
+                payments = Payment.query.filter_by(lease_agreement_id=agreement_or_payment_id)
+            if payments:
+                return[{
                     'payment_id': payment.payment_id,
                     'lease_agreement_id': payment.lease_agreement_id,
                     'payment_date': payment.payment_date.isoformat() if payment.payment_date else None,
@@ -17,7 +22,7 @@ class PaymentResource(Resource):
                     'reference_number': payment.reference_number,
                     'image_path': payment.image_path,
                     'status': payment.status.name
-                }
+                } for payment in payments]
             else:
                 return { 'message': 'payment not found'}, 404
         else:
@@ -53,8 +58,12 @@ class PaymentResource(Resource):
             return {'error': 'Error creating payment'}, 500
     
     # Edit data
-    def put(self, payment_id):
-        payment = Payment.query.get(payment_id)
+    def put(self, agreement_or_payment_id):
+        if agreement_or_payment_id.isdigit():
+                payment = Payment.query.get(agreement_or_payment_id)
+        else:
+            agreement_or_payment_id = int(agreement_or_payment_id.replace('LEASE', '').strip())
+            payment = Payment.query.filter_by(lease_agreement_id=agreement_or_payment_id)
         if payment:
             data = request.get_json()
             payment.payment_date = data['payment_date']
@@ -69,5 +78,5 @@ class PaymentResource(Resource):
             return {'message': 'Payment not found'}, 404
 
     # Prohibit delete
-    def delete(self, payment_id):
+    def delete(self, lease_agreement_id):
         return {'message': 'Payments cannot be removed'}, 404
