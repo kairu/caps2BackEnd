@@ -15,6 +15,7 @@ class BillResource(Resource):
                     'soa_id': bill.soa_id,
                     'due_date': bill.due_date.isoformat() if bill.due_date else None,
                     'total_amount': bill.total_amount,
+                    'delinquent_amount': bill.delinquent_amount,
                     'breakdown': bill.breakdown,
                     'bill_type': bill.bill_type,
                     'payment_method': bill.payment_method,
@@ -32,6 +33,7 @@ class BillResource(Resource):
                 'soa_id': bill.soa_id,
                 'due_date': bill.due_date.isoformat() if bill.due_date else None,
                 'total_amount': bill.total_amount,
+                'delinquent_amount': bill.delinquent_amount,
                 'breakdown': bill.breakdown,
                 'bill_type': bill.bill_type,
                 'payment_method': bill.payment_method,
@@ -73,6 +75,8 @@ class BillResource(Resource):
                 bill.due_date = data['due_date']
             if 'total_amount' in data:
                 bill.total_amount = data['total_amount']
+            if 'delinquent_amount' in data:
+                bill.delinquent_amount = data['delinquent_amount']
             if 'breakdown' in data:
                 bill.breakdown = data['breakdown']
             if 'bill_type' in data:
