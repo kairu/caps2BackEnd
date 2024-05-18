@@ -70,6 +70,7 @@ class Bill(db.Model):
     soa_id = db.Column(db.Text, nullable=True)
     due_date = db.Column(db.Date, nullable=False)
     total_amount = db.Column(db.Float, nullable=False)
+    delinquent_amount = db.Column(db.Float, nullable=True)
     breakdown = db.Column(db.Text, nullable=True)
     bill_type = db.Column(db.Enum(bill_type), nullable=True)
     payment_method = db.Column(db.String(50), nullable=True)
