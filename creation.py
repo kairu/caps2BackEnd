@@ -25,6 +25,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['BULLETIN_IMAGES'] = 'static/bulletin-board'
 app.config['OCR_RECEIPTS'] = 'static/ocr-receipts'
 app.config['CONTRACTS'] ='static/contracts'
+app.config['PAYMENT_IMAGES'] ='static/payment-images'
 app.config['TEMP'] = 'static/TMP'
 
 db = SQLAlchemy(app)
@@ -46,7 +47,17 @@ def check_cms_archive():
             continue
         if cms.date_to_end < current_date:
             cms.archive = True
+    generate_delinquency(current_date)
     db.session.commit()
+    
+def generate_delinquency(current_date):
+    if not Bill.query.all():
+        return
+    bills_list = Bill.query.all()
+    for bill in bills_list:
+        if bill.status == 1 and (bill.due_date < current_date):
+            bill.delinquent_amount = (bill.total_amount * 0.03) * ((current_date - bill.due_date).days // 30)
+            # print(f'Bill {bill.bill_id} has been delinquent for {bill.delinquent_amount} since {bill.due_date} of days {(current_date - bill.due_date).days // 30}')
 
 # Schedule recurring checks  
 def schedule_checks():
