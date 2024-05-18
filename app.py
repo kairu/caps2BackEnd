@@ -12,7 +12,7 @@ api.add_resource(UserResource, '/user', '/user/<string:email_or_user_id>')
 api.add_resource(UnitResource, '/unit', '/unit/<int:unit_id>')
 # api.add_resource(TenantResource, '/tenant', '/tenant/<int:tenant_id>')
 api.add_resource(LeaseAgreementResource, '/lease', '/lease/<string:lease_id_or_tenant_id>')
-api.add_resource(PaymentResource, '/payment', '/payment/<int:payment_id>')
+api.add_resource(PaymentResource, '/payment', '/payment/<string:agreement_or_payment_id>')
 api.add_resource(BillResource, '/bill', '/bill/<int:bill_id>')
 api.add_resource(CmsResource, '/cms', '/cms/<int:cms_id>')
 api.add_resource(AccessControlResource, '/accesscontrol')
@@ -42,6 +42,11 @@ def serve_contract(filename):
 def serve_ocr_receipt(filename):
     if app.config['OCR_RECEIPTS']:
         return send_from_directory(app.config['OCR_RECEIPTS'], filename, mimetype=get_mimetype(filename))
+    
+@app.route('/paymentImage/<filename>', methods=['GET'])
+def serve_payment_image(filename):
+    if app.config['PAYMENT_IMAGES']:
+        return send_from_directory(app.config['PAYMENT_IMAGES'], filename, mimetype=get_mimetype(filename))
     
 import hashlib
 import os
@@ -77,7 +82,9 @@ def ocr_image():
             file = request.files['file']
             data = json.loads(request.form.get('data'))
             soa_id = str(data.get("SOA ID"))
-            amount = str(data.get("Amount"))
+            amount = data.get("Amount")
+            delinquent_amount = data.get("Delinquent Amount")
+            amount = str(amount + delinquent_amount)
             bill_id = data.get("bill_id")
             if '.' not in amount:
                 amount = f"{amount}.00"
