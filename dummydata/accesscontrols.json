@@ -31,8 +31,8 @@
 		"module_name": "Tenant Lease",
 		"super_admin": 0,
 		"admin": 0,
-		"owner": 0,
-		"tenant": 1,
+		"owner": 1,
+		"tenant": 0,
 		"guest": 0
 	},
 	{
@@ -40,8 +40,8 @@
 		"module_name": "History and Invoice",
 		"super_admin": 0,
 		"admin": 0,
-		"owner": 1,
-		"tenant": 1,
+		"owner": 0,
+		"tenant": 0,
 		"guest": 0
 	},
 	{
@@ -50,7 +50,7 @@
 		"super_admin": 0,
 		"admin": 0,
 		"owner": 1,
-		"tenant": 1,
+		"tenant": 0,
 		"guest": 0
 	},
 	{
