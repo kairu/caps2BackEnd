@@ -25,6 +25,7 @@ paddlepaddle\
 paddleocr\
 Pillow\
 opencv-python\
+gunicorn\
 \
 avidatrack\
 password
