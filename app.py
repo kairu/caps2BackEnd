@@ -1,5 +1,5 @@
-from flask import request
-from creation import app, api, startup, send_from_directory
+from flask import request, send_from_directory
+from creation import app, api, startup
 import ocr
 # Define Resources
 from crud_resource import UserResource, UnitResource, LeaseAgreementResource, PaymentResource, BillResource, CmsResource, AccessControlResource
