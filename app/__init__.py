@@ -4,11 +4,15 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS
 from .extensions import db, migrate
-from .routes import populate_bp, bulletin_bp, contract_bp, payment_bp, ocr_bp
 from .config import Config
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
 from sqlalchemy_utils import database_exists, create_database
+from .routes.bulletin_board import bulletin_bp
+from .routes.contract import contract_bp
+from .routes.index import populate_bp
+from .routes.ocr import ocr_bp
+from .routes.payment import payment_bp
 
 db = SQLAlchemy()
 migrate = Migrate()
