@@ -1,7 +1,6 @@
-from creation import db, Payment
-from flask_restful import Resource
-from flask import request
-from sqlalchemy.exc import IntegrityError
+from .common import Resource, request, IntegrityError
+from ..models import Payment
+from ..extensions import db
 
 class PaymentResource(Resource):
     def get(self, agreement_or_payment_id=None):

@@ -1,7 +1,6 @@
-from creation import db, Unit
-from flask_restful import Resource
-from flask import request
-from sqlalchemy.exc import IntegrityError
+from .common import Resource, request, IntegrityError
+from ..models import Unit
+from ..extensions import db
 
 class UnitResource(Resource):
     def get(self, unit_id=None):

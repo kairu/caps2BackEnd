@@ -1,8 +1,6 @@
-import re
-from creation import db, User
-from flask_restful import Resource
-from flask import request
-from sqlalchemy.exc import IntegrityError
+from .common import re, Resource, request, IntegrityError
+from ..models import User
+from ..extensions import db
 
 class UserResource(Resource):
     

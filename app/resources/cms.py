@@ -1,8 +1,6 @@
-from creation import db, Cms
-from flask_restful import Resource
-from flask import request
-from sqlalchemy.exc import IntegrityError
-from datetime import datetime
+from .common import Resource, request, IntegrityError, datetime
+from ..models import Cms
+from ..extensions import db
 
 class CmsResource(Resource):
     def get(self, cms_id=None):

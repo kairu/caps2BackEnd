@@ -1,7 +1,6 @@
-from creation import db, Bill
-from flask_restful import Resource
-from flask import request
-from sqlalchemy.exc import IntegrityError
+from .common import Resource, request, IntegrityError
+from ..models import Bill
+from ..extensions import db
 
 class BillResource(Resource):
     def get(self, bill_id=None):

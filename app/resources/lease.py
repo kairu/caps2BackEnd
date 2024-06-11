@@ -1,7 +1,6 @@
-from creation import db, LeaseAgreement
-from flask_restful import Resource
-from flask import request
-from sqlalchemy.exc import IntegrityError
+from .common import Resource, request, IntegrityError
+from ..models import LeaseAgreement
+from ..extensions import db
 
 class LeaseAgreementResource(Resource):
     def get(self, lease_id_or_tenant_id=None):

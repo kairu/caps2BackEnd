@@ -1,7 +1,6 @@
-from creation import db, AccessControl
-from flask_restful import Resource
-from flask import request
-from sqlalchemy.exc import IntegrityError
+from .common import Resource, request
+from ..models import AccessControl
+from ..extensions import db
 
 class AccessControlResource(Resource):
     def get(self):
