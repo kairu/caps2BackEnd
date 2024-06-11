@@ -1,7 +1,8 @@
 from ..models import Bill
-from .common import db
+from .common import db, datetime
 
-def generate_delinquency(current_date):
+def generate_delinquency():
+    current_date = datetime.now().date()
     with db.app.app_context():
         if not Bill.query.all():
             return
