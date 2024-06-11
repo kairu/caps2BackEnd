@@ -43,6 +43,11 @@ def create_app():
     
     # Tasks
     from .tasks import check_cms_archive, generate_delinquency
+    # Run task at runtime
+    check_cms_archive()
+    generate_delinquency()
+    
+    # Schedules a job at midnight
     scheduler.add_job(check_cms_archive, CronTrigger(hour=0, minute=0))
     scheduler.add_job(generate_delinquency, CronTrigger(hour=0, minute=0))
     scheduler.start()
