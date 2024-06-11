@@ -1,4 +1,9 @@
-from common import Blueprint, send_from_directory, current_app, os, request, get_mimetype, hash_filename, requests, json
+import os
+from flask import Blueprint, send_from_directory, current_app, request
+from ..services.mimetype import get_mimetype
+from ..services.hashfile import hash_filename
+import requests
+import json
 import app.services.ocr as ocr
 
 ocr_bp = Blueprint('ocr', __name__)

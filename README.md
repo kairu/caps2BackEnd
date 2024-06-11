@@ -26,6 +26,7 @@ paddleocr\
 Pillow\
 opencv-python\
 gunicorn\
+apscheduler\
 \
 avidatrack\
 password

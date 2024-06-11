@@ -1,6 +1,7 @@
-from common import Blueprint, send_from_directory, current_app, os, request, get_mimetype, hash_filename
-
-
+import os
+from flask import Blueprint, send_from_directory, current_app, request
+from ..services.mimetype import get_mimetype
+from ..services.hashfile import hash_filename
 
 bulletin_bp = Blueprint('bulletin', __name__)
 

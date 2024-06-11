@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS
 from .extensions import db, migrate
+from .routes import populate_bp, bulletin_bp, contract_bp, payment_bp, ocr_bp
 from .config import Config
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
@@ -47,7 +48,6 @@ def create_app():
     scheduler.start()
     
     # Routes Blueprint
-    from .routes import populate_bp, bulletin_bp, contract_bp, payment_bp, ocr_bp
     app.register_blueprint(populate_bp)
     app.register_blueprint(bulletin_bp)
     app.register_blueprint(contract_bp)
