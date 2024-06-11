@@ -3,7 +3,6 @@ from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS
-from .extensions import db, migrate
 from .config import Config
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
@@ -13,25 +12,24 @@ from .routes.contract import contract_bp
 from .routes.index import populate_bp
 from .routes.ocr import ocr_bp
 from .routes.payment import payment_bp
+from .extensions import db, migrate
+from .models import User, Unit, LeaseAgreement, Payment, Bill, Cms, AccessControl
 
-db = SQLAlchemy()
-migrate = Migrate()
 scheduler = BackgroundScheduler()
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_object(Config)
-    
-    # Check if the database exists, if not, create it
-    if not database_exists(app.config['SQLALCHEMY_DATABASE_URI']):
-        create_database(app.config['SQLALCHEMY_DATABASE_URI'])
-    
     CORS(app, resources={r"/*": {"origins": ["http://localhost:4200"]}})
+    app.config.from_object(Config)
+    api = Api(app)
     
     # Initialize extensions
     db.init_app(app)
     migrate.init_app(app, db)
-    api = Api(app)
+    
+    # Check if the database exists, if not, create it
+    if not database_exists(app.config['SQLALCHEMY_DATABASE_URI']):
+        create_database(app.config['SQLALCHEMY_DATABASE_URI'])
     
     # Register Resources
     from .resources import UserResource, UnitResource, LeaseAgreementResource, PaymentResource, BillResource, CmsResource, AccessControlResource
@@ -42,8 +40,6 @@ def create_app():
     api.add_resource(BillResource, '/bill', '/bill/<int:bill_id>')
     api.add_resource(CmsResource, '/cms', '/cms/<int:cms_id>')
     api.add_resource(AccessControlResource, '/accesscontrol')
-    
-    from .models import User, Unit, LeaseAgreement, Payment, Bill, Cms, AccessControl
     
     # Tasks
     from .tasks import check_cms_archive, generate_delinquency
