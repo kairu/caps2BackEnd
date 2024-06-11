@@ -1,10 +1,9 @@
 from ..models import Bill
-from .common import db, datetime
-from flask import current_app
+from .common import db, datetime, scheduler
 
 def generate_delinquency():
     current_date = datetime.now().date()
-    with current_app.app_context():
+    with scheduler.app.app_context():
         if not Bill.query.all():
             return
         bills_list = Bill.query.all()

@@ -1,9 +1,8 @@
 from ..models import Cms
-from .common import datetime, db
-from flask import current_app
+from .common import datetime, db, scheduler
 
 def check_cms_archive():
-    with current_app.app_context():
+    with scheduler.app.app_context():
         if not Cms.query.all():
             return
         current_date = datetime.now().date()

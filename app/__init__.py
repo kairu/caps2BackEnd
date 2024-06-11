@@ -4,18 +4,18 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS
 from .config import Config
-from apscheduler.schedulers.background import BackgroundScheduler
-from apscheduler.triggers.cron import CronTrigger
+# from apscheduler.schedulers.background import BackgroundScheduler
+# from apscheduler.triggers.cron import CronTrigger
 from sqlalchemy_utils import database_exists, create_database
 from .routes.bulletin_board import bulletin_bp
 from .routes.contract import contract_bp
 from .routes.index import populate_bp
 from .routes.ocr import ocr_bp
 from .routes.payment import payment_bp
-from .extensions import db, migrate
+from .extensions import db, migrate, scheduler
 from .models import User, Unit, LeaseAgreement, Payment, Bill, Cms, AccessControl
 
-scheduler = BackgroundScheduler()
+#scheduler = BackgroundScheduler()
 
 def create_app():
     app = Flask(__name__)
@@ -43,14 +43,18 @@ def create_app():
     
     # Tasks
     from .tasks import check_cms_archive, generate_delinquency
+    # Initialize the scheduler
+
+    scheduler.init_app(app)
+    scheduler.start()
+    # Add jobs to the scheduler
+    scheduler.add_job(id='check_cms_archive', func=check_cms_archive, trigger='cron', hour=0, minute=0)
+    scheduler.add_job(id='generate_delinquency', func=generate_delinquency, trigger='cron', hour=0, minute=0)
+    
     # Run task at runtime
     check_cms_archive()
     generate_delinquency()
     
-    # Schedules a job at midnight
-    scheduler.add_job(check_cms_archive, CronTrigger(hour=0, minute=0))
-    scheduler.add_job(generate_delinquency, CronTrigger(hour=0, minute=0))
-    scheduler.start()
     
     # Routes Blueprint
     app.register_blueprint(populate_bp)

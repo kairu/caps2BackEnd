@@ -12,3 +12,4 @@ class Config:
     CONTRACTS = 'static/contracts'
     PAYMENT_IMAGES = 'static/payment-images'
     TEMP = 'static/TMP'
+    SCHEDULER_API_ENABLED = True
