@@ -5,14 +5,16 @@ from ..extensions import db
 class LeaseAgreementResource(Resource):
     def get(self, lease_id_or_tenant_id=None):
         if lease_id_or_tenant_id:
-            lease = None
             if lease_id_or_tenant_id.isdigit():
-                lease = LeaseAgreement.query.get(lease_id_or_tenant_id)
+                leases = LeaseAgreement.query.get(lease_id_or_tenant_id)
+            elif 'OWNER' in lease_id_or_tenant_id:
+                lease_id_or_tenant_id = int(lease_id_or_tenant_id.replace('OWNER', '').strip())
+                leases = LeaseAgreement.query.filter_by(owner_id = lease_id_or_tenant_id).all()
             else:
                 lease_id_or_tenant_id = int(lease_id_or_tenant_id.replace('TENANT', '').strip())
-                lease = LeaseAgreement.query.filter_by(tenant_id=lease_id_or_tenant_id).first()
-            if lease:
-                return{
+                leases = LeaseAgreement.query.filter_by(tenant_id=lease_id_or_tenant_id).all()
+            if leases:
+                return[{
                     'lease_agreement_id': lease.lease_agreement_id,
                     'unit_id': lease.unit_id,
                     'owner_id': lease.owner_id,
@@ -23,22 +25,22 @@ class LeaseAgreementResource(Resource):
                     'monthly_rent': lease.monthly_rent,
                     'security_deposit': lease.security_deposit,
                     'remaining_balance': lease.remaining_balance
-                }
+                }for lease in leases]
             else:
-                return {'message': 'Tenant not found'}, 404
+                return {'message': 'Lease not found'}, 404
         else:
             leases = LeaseAgreement.query.all()
             return [{
                 'lease_agreement_id': lease.lease_agreement_id,
-                    'unit_id': lease.unit_id,
-                    'owner_id': lease.owner_id,
-                    'tenant_id': lease.tenant_id,
-                    'contract': lease.contract,
-                    'start_date': lease.start_date.isoformat() if lease.start_date else None,
-                    'end_date': lease.end_date.isoformat() if lease.end_date else None,
-                    'monthly_rent': lease.monthly_rent,
-                    'security_deposit': lease.security_deposit,
-                    'remaining_balance': lease.remaining_balance
+                'unit_id': lease.unit_id,
+                'owner_id': lease.owner_id,
+                'tenant_id': lease.tenant_id,
+                'contract': lease.contract,
+                'start_date': lease.start_date.isoformat() if lease.start_date else None,
+                'end_date': lease.end_date.isoformat() if lease.end_date else None,
+                'monthly_rent': lease.monthly_rent,
+                'security_deposit': lease.security_deposit,
+                'remaining_balance': lease.remaining_balance
                     
             }for lease in leases]
     
