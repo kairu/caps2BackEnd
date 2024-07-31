@@ -43,9 +43,9 @@ class PaymentResource(Resource):
             data = request.get_json()
 
             # Check if Payment exists
-            existing_payment = Payment.query.filter_by(reference_number=data['reference_number']).first()
-            if existing_payment:
-                return {'error': 'Payment reference number already exists'}, 409
+            # existing_payment = Payment.query.filter_by(reference_number=data['reference_number']).first()
+            # if existing_payment:
+                # return {'error': 'Payment reference number already exists'}, 409
             
             new_payment = Payment(**data)
             db.session.add(new_payment)

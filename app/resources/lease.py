@@ -50,9 +50,9 @@ class LeaseAgreementResource(Resource):
             data = request.get_json()
 
             # Check if lease exists
-            existing_lease = LeaseAgreement.query.filter_by(lease_agreement_id=data['lease_agreement_id'])
-            if existing_lease:
-                return {'error': 'This lease already exists'},409
+            # existing_lease = LeaseAgreement.query.filter_by(lease_agreement_id=data['lease_agreement_id'])
+            # if existing_lease:
+            #     return {'error': 'This lease already exists'},409
             
             new_lease = LeaseAgreement(**data)
             db.session.add(new_lease)
