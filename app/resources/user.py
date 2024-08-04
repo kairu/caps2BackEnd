@@ -90,10 +90,12 @@ class UserResource(Resource):
                         'payments': [{
                             'payment_id': payment.payment_id,
                             'lease_agreement_id': agreement.lease_agreement_id,
+                            'due_date': payment.due_date.isoformat() if payment.due_date else None,
                             'payment_date': payment.payment_date.isoformat() if payment.payment_date else None,
                             'amount': payment.amount,
                             'payment_method': payment.payment_method,
                             'reference_number': payment.reference_number,
+                            'image_path': payment.image_path,
                             'status': payment.status.name
                         } for payment in agreement.payments]
                     } for agreement in user.lease_agreements]
@@ -180,10 +182,12 @@ class UserResource(Resource):
                         'tenant_info': self.get_tenant_info(agreement.tenant_id),
                         'payments': [{
                             'payment_id': payment.payment_id,
+                            'due_date': payment.due_date.isoformat() if payment.due_date else None,
                             'payment_date': payment.payment_date.isoformat() if payment.payment_date else None,
                             'amount': payment.amount,
                             'payment_method': payment.payment_method,
                             'reference_number': payment.reference_number,
+                            'image_path': payment.image_path,
                             'status': payment.status.name
                         } for payment in agreement.payments]
                     } for agreement in user.lease_agreements]
@@ -232,7 +236,6 @@ class UserResource(Resource):
             return response_data, 201
         except IntegrityError as e:
             db.session.rollback()  # Rollback the transaction
-            print(f"Error creating user: {str(e)}")
             return {'error': 'Error creating user'}, 500
 
     # Editing/Updating Data
@@ -244,12 +247,16 @@ class UserResource(Resource):
                 user = User.query.get(email_or_user_id)
             if user:
                 data = request.get_json()
-                user.first_name = data['first_name']
-                user.last_name = data['last_name']
-                user.mobile_number = data['mobile_number']
-                if data.get('user_type'):
+                if 'first_name' in data:
+                    user.first_name = data['first_name']
+                if 'last_name' in data:
+                    user.last_name = data['last_name']
+                if 'mobile_number' in data:
+                    user.mobile_number = data['mobile_number']
+                if 'user_type' in data:
                     user.user_type = data['user_type']
-                user.is_validated = data['is_validated']
+                if 'is_validated' in data: 
+                    user.is_validated = data['is_validated']
                 db.session.commit()
                 return {'message': 'User updated successfully'}
             else:

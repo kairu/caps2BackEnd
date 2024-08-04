@@ -15,6 +15,7 @@ class PaymentResource(Resource):
                 return[{
                     'payment_id': payment.payment_id,
                     'lease_agreement_id': payment.lease_agreement_id,
+                    'due_date': payment.due_date.isoformat() if payment.due_date else None,
                     'payment_date': payment.payment_date.isoformat() if payment.payment_date else None,
                     'amount': payment.amount,
                     'payment_method': payment.payment_method,
@@ -29,6 +30,7 @@ class PaymentResource(Resource):
             return [{
                 'payment_id': payment.payment_id,
                 'lease_agreement_id': payment.lease_agreement_id,
+                'due_date': payment.due_date.isoformat() if payment.due_date else None,
                 'payment_date': payment.payment_date.isoformat() if payment.payment_date else None,
                 'amount': payment.amount,
                 'payment_method': payment.payment_method,
@@ -53,7 +55,6 @@ class PaymentResource(Resource):
             return {'message': 'Payment created successfully'}, 201
         except IntegrityError as e:
             db.session.rollback()
-            print(f'Error creating payment: {str(e)}')
             return {'error': 'Error creating payment'}, 500
     
     # Edit data
@@ -65,12 +66,20 @@ class PaymentResource(Resource):
             payment = Payment.query.filter_by(lease_agreement_id=agreement_or_payment_id)
         if payment:
             data = request.get_json()
-            payment.payment_date = data['payment_date']
-            payment.amount = data['amount']
-            payment.payment_method = data['payment_method']
-            payment.reference_number = data['reference_number']
-            payment.image_path = data['image_path']
-            payment.status = data['status']
+            if 'payment_date' in data:
+                payment.payment_date = data['payment_date']
+            if 'amount' in data:
+                payment.amount = data['amount']
+            if 'due_date' in data:
+                payment.payment_method = data['due_date']
+            if 'payment_method' in data:
+                payment.payment_method = data['payment_method']
+            if 'reference_number' in data:
+                payment.reference_number = data['reference_number']
+            if 'image_path' in data:
+                payment.image_path = data['image_path']
+            if 'status' in data:
+                payment.status = data['status']            
             db.session.commit()
             return {'message': 'Payment updated successfully'}
         else:

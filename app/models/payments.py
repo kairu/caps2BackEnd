@@ -6,6 +6,7 @@ class Payment(db.Model):
 
     payment_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     lease_agreement_id = db.Column(db.Integer, db.ForeignKey('lease_agreements.lease_agreement_id'), nullable=False)
+    due_date = db.Column(db.Date, nullable=False)
     payment_date = db.Column(db.Date, nullable=True)
     amount = db.Column(db.Integer, nullable=True)
     payment_method = db.Column(db.String(50), nullable=True)

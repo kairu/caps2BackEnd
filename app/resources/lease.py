@@ -57,10 +57,14 @@ class LeaseAgreementResource(Resource):
             new_lease = LeaseAgreement(**data)
             db.session.add(new_lease)
             db.session.commit()
-            return {'message': 'Lease created successfully'}, 201
+            
+            response_data = {
+                'message': 'Lease created successfully',
+                'lease_agreement_id': new_lease.lease_agreement_id,
+            }
+            return response_data, 201
         except IntegrityError as e:
             db.session.rollback()
-            print(f'Error creating a lease: {str(e)}')
             return{'error': 'Error creating lease'}, 500
         
     # Edit Data
