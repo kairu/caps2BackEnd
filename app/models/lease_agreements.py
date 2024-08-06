@@ -16,3 +16,5 @@ class LeaseAgreement(db.Model):
 
     unit = db.relationship("Unit", backref="lease_agreements")
     owner = db.relationship("User", foreign_keys=[owner_id], backref="lease_agreements")
+    
+### Might have to create a new table for archive tenants.

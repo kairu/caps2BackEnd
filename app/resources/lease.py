@@ -90,6 +90,10 @@ class LeaseAgreementResource(Resource):
                 lease.security_deposit = data['security_deposit']
             if 'remaining_balance' in data:
                 lease.remaining_balance = data['remaining_balance']
+            if 'deduct_balance' in data:
+                lease.remaining_balance -= data['deduct_balance']
+            if 'add_balance' in data:
+                lease.remaining_balance += data['add_balance']
             db.session.commit()
             return{ 'message': 'Lease Agreement updated successfully'}
         else:
