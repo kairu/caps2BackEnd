@@ -112,7 +112,12 @@ class UserResource(Resource):
                         'date_to_post': cms.date_to_post.isoformat() if cms.date_to_post else None,
                         'date_to_end': cms.date_to_end.isoformat() if cms.date_to_end else None,
                         'archive': cms.archive,
-                        'status': cms.status.name
+                        'status': cms.status.name,
+                        'notes': [{
+                            'fc_id': note.fc_id,
+                            'cms_id': note.cms_id,
+                            'notes': note.notes
+                        } for note in cms.notes]
                     } for cms in user.cms]
 
                 return user_data
@@ -204,7 +209,12 @@ class UserResource(Resource):
                         'date_to_post': cms.date_to_post.isoformat() if cms.date_to_post else None,
                         'date_to_end': cms.date_to_end.isoformat() if cms.date_to_end else None,
                         'archive': cms.archive,
-                        'status': cms.status.name
+                        'status': cms.status.name,
+                        'notes': [{
+                            'fc_id': note.fc_id,
+                            'cms_id': note.cms_id,
+                            'notes': note.notes
+                        } for note in cms.notes]
                     } for cms in user.cms]
                    
                 users_data.append(user_data)

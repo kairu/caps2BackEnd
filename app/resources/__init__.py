@@ -6,3 +6,4 @@ from .payment import PaymentResource
 from .bill import BillResource
 from .cms import CmsResource
 from .accesscontrol import AccessControlResource
+from .feedback_complaint_notes import FeedbackComplaintNotesResource

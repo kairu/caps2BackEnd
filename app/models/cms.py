@@ -17,3 +17,5 @@ class Cms(db.Model):
     date_to_end = db.Column(db.Date, nullable=True)
     archive = db.Column(db.Boolean, default=False)
     status = db.Column(db.Enum(status), default=status.PENDING)
+    
+    notes = db.relationship("FeedbackComplaintNotes", backref="cms")

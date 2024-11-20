@@ -13,7 +13,7 @@ from .routes.index import populate_bp
 from .routes.ocr import ocr_bp
 from .routes.payment import payment_bp
 from .extensions import db, migrate, scheduler
-from .models import User, Unit, LeaseAgreement, Payment, Bill, Cms, AccessControl
+from .models import User, Unit, LeaseAgreement, Payment, Bill, Cms, AccessControl, FeedbackComplaintNotes
 
 #scheduler = BackgroundScheduler()
 
@@ -32,7 +32,7 @@ def create_app():
         create_database(app.config['SQLALCHEMY_DATABASE_URI'])
     
     # Register Resources
-    from .resources import UserResource, UnitResource, LeaseAgreementResource, PaymentResource, BillResource, CmsResource, AccessControlResource
+    from .resources import UserResource, UnitResource, LeaseAgreementResource, PaymentResource, BillResource, CmsResource, AccessControlResource, FeedbackComplaintNotesResource
     api.add_resource(UserResource, '/user', '/user/<string:email_or_user_id>')
     api.add_resource(UnitResource, '/unit', '/unit/<int:unit_id>')
     api.add_resource(LeaseAgreementResource, '/lease', '/lease/<string:lease_id_or_tenant_id>')
@@ -40,6 +40,7 @@ def create_app():
     api.add_resource(BillResource, '/bill', '/bill/<int:bill_id>')
     api.add_resource(CmsResource, '/cms', '/cms/<int:cms_id>')
     api.add_resource(AccessControlResource, '/accesscontrol')
+    api.add_resource(FeedbackComplaintNotesResource, '/feedbackcomplaintnotes', '/feedbackcomplaintnotes/<int:cms_id>')
     
     # Tasks
     from .tasks import check_cms_archive, generate_delinquency

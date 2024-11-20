@@ -27,8 +27,8 @@ def ocr_image():
             data = json.loads(request.form.get('data'))
             soa_id = str(data.get("SOA ID"))
             amount = data.get("Amount")
-            delinquent_amount = data.get("Delinquent Amount")
-            amount = str(amount + delinquent_amount)
+            delinquent_amount = data.get("Delinquent Amount", 0)
+            amount = str(float(amount or 0) + float(delinquent_amount or 0))            
             bill_id = data.get("bill_id")
             if '.' not in amount:
                 amount = f"{amount}.00"

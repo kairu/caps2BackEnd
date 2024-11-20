@@ -1,6 +1,6 @@
 import json
 from ..extensions import db
-from ..models import User, Cms, Unit, Bill, LeaseAgreement, Payment, AccessControl
+from ..models import User, Cms, Unit, Bill, LeaseAgreement, Payment, AccessControl, FeedbackComplaintNotes
 
 def load_data_to_db(model, json_file_path, filter_key, filter_value):
     with open(json_file_path, 'r') as file:
@@ -26,6 +26,7 @@ def startup():
         {'model': LeaseAgreement, 'filter_key': 'lease_agreement_id'},
         {'model': Payment, 'filter_key': 'payment_id'},
         {'model': AccessControl, 'filter_key': 'module_id'},
+        {'model': FeedbackComplaintNotes, 'filter_key': 'fc_id'}
     ]
 
     # Iterate over models and load data

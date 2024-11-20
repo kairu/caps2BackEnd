@@ -7,7 +7,7 @@ class CmsResource(Resource):
         if cms_id:
             cms = Cms.query.get(cms_id)
             if cms:
-                return{
+                cms_data = {
                     'cms_id': cms.cms_id,
                     'user_id': cms.user_id,
                     'image_path': cms.image_path,
@@ -20,12 +20,28 @@ class CmsResource(Resource):
                     'date_to_end': cms.date_to_end.isoformat() if cms.date_to_end else None,
                     'archive': cms.archive,
                     'status': cms.status.name
-                }, 200
+                }
+                
+                cms_data['notes'] = []
+                
+                for notes in cms.notes:
+                    note_data ={
+                        'fc_id': notes.fc_id,
+                        'cms_id': notes.cms_id,
+                        'notes': notes.notes
+                    }
+                    
+                cms_data['notes'].append(note_data)
+                
+                return cms_data
             else:
                 return {'message': 'No such Content'},404
         else:
             cmss = Cms.query.all()
-            return [{
+            cmss_data = []
+            
+            for cms in cmss:
+                cms_data = {
                 'cms_id': cms.cms_id,
                 'user_id': cms.user_id,
                 'image_path': cms.image_path,
@@ -38,7 +54,21 @@ class CmsResource(Resource):
                 'date_to_end': cms.date_to_end.isoformat() if cms.date_to_end else None,
                 'archive': cms.archive,
                 'status': cms.status.name
-            }for cms in cmss]
+                }
+                
+                cms_data['notes'] = []
+                
+                if cms.notes:
+                    for notes in cms.notes:
+                        note_data ={
+                            'fc_id': notes.fc_id,
+                            'cms_id': notes.cms_id,
+                            'notes': notes.notes
+                        }
+                        cms_data['notes'].append(note_data)
+                
+                cmss_data.append(cms_data)                
+            return cmss_data
         
     # Add data
     def post(self):
@@ -62,22 +92,32 @@ class CmsResource(Resource):
         data = request.get_json()
         cms = Cms.query.get(cms_id)
         if cms:
-            cms.user_id = data['user_id']
-            cms.image_apth = data['image_path']
-            cms.title = data['title']
-            cms.description = data['description']
-            cms.cms_type = data['cms_type']
-            cms.date_posted = datetime.now().date()
-            cms.time_posted = datetime.now().time()
-            
+            if 'user_id' in data:
+                cms.user_id = data['user_id']
+            if 'image_path' in data:
+                cms.image_path = data['image_path']
+            if 'title' in data:
+                cms.title = data['title']
+            if 'description' in data:
+                cms.description = data['description']
+            if 'cms_type' in data:
+                cms.cms_type = data['cms_type']
+            if 'date_posted' in data:
+                cms.date_posted = data['date_posted']
+            if 'time_posted' in data:
+                cms.time_posted = data['time_posted']
             if 'date_to_post' in data:
                 cms.date_to_post = data['date_to_post']
             if 'date_to_end' in data:
                 cms.date_to_end = data['date_to_end']
+            if 'archive' in data:
+                cms.archive = data['archive']
+            if 'status' in data:
+                cms.status = data['status']
                 
-            cms.image_path = data['image_path']
-            cms.archive = data['archive']
-            cms.status = data['status']
+            if 'feedback' not in data:
+                cms.date_posted = datetime.now().date()
+                cms.time_posted = datetime.now().time()
 
             db.session.commit()
             return {'message': 'Content updated Successfully',
