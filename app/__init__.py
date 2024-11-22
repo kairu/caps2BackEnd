@@ -12,6 +12,8 @@ from .routes.contract import contract_bp
 from .routes.index import populate_bp
 from .routes.ocr import ocr_bp
 from .routes.payment import payment_bp
+from .routes.delinqent_bills import delinquentBills_bp
+from .routes.billing_performance import billing_performance_bp
 from .extensions import db, migrate, scheduler
 from .models import User, Unit, LeaseAgreement, Payment, Bill, Cms, AccessControl, FeedbackComplaintNotes
 
@@ -63,5 +65,7 @@ def create_app():
     app.register_blueprint(contract_bp)
     app.register_blueprint(payment_bp)
     app.register_blueprint(ocr_bp)
+    app.register_blueprint(delinquentBills_bp)
+    app.register_blueprint(billing_performance_bp)
     
     return app
