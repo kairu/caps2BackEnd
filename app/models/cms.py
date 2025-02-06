@@ -17,5 +17,10 @@ class Cms(db.Model):
     date_to_end = db.Column(db.Date, nullable=True)
     archive = db.Column(db.Boolean, default=False)
     status = db.Column(db.Enum(status), default=status.PENDING)
-    
+    # 1 = Admin/Super_admin
+    # Whole Number #### = Owner, 
+    # -2 = Tenant(Might not use), 
+    # Negative Number -#### = Both
+    notify_to = db.Column(db.Integer, nullable=True)
+
     notes = db.relationship("FeedbackComplaintNotes", backref="cms")
