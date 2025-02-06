@@ -11,5 +11,6 @@ class Config:
     OCR_RECEIPTS = 'static/ocr-receipts'
     CONTRACTS = 'static/contracts'
     PAYMENT_IMAGES = 'static/payment-images'
+    TENANT_REPRESENTATIVE_IMAGES = 'static/representatives-images'
     TEMP = 'static/TMP'
     SCHEDULER_API_ENABLED = True

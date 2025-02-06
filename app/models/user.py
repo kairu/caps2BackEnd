@@ -12,6 +12,8 @@ class User(db.Model):
     user_type = db.Column(db.Enum(user_type), nullable=False)
     is_active = db.Column(db.Boolean, default=False)
     is_validated = db.Column(db.Boolean, default=False)
+    lessor_id = db.Column(db.Integer, nullable=True)
 
     unit = db.relationship("Unit", backref="users")
+    tenant_representatives = db.relationship("TenantRepresentatives", backref="users")
     cms = db.relationship("Cms", backref="users")

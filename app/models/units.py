@@ -8,7 +8,9 @@ class Unit(db.Model):
     tower_number = db.Column(db.Integer, nullable=False)
     floor_number = db.Column(db.Integer, nullable=False)
     unit_number = db.Column(db.Integer, nullable=False)
-    sq_foot = db.Column(db.Integer, nullable=True)
+    unit_type = db.Column(db.Text, nullable=True)
+    sq_foot = db.Column(db.Integer, nullable=True) # Unit Size
+
     number_of_bedrooms = db.Column(db.Integer, nullable=True)
     number_of_bathrooms = db.Column(db.Integer, nullable=True)
     parking_slot = db.Column(db.String(20), nullable=True)

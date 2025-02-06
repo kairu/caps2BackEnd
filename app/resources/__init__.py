@@ -7,3 +7,4 @@ from .bill import BillResource
 from .cms import CmsResource
 from .accesscontrol import AccessControlResource
 from .feedback_complaint_notes import FeedbackComplaintNotesResource
+from .tenant_representatives import TenantRepresentativesResource

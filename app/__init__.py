@@ -14,8 +14,9 @@ from .routes.ocr import ocr_bp
 from .routes.payment import payment_bp
 from .routes.delinqent_bills import delinquentBills_bp
 from .routes.billing_performance import billing_performance_bp
+from .routes.owner_tenant_relation import owner_tenant_relation_bp
 from .extensions import db, migrate, scheduler
-from .models import User, Unit, LeaseAgreement, Payment, Bill, Cms, AccessControl, FeedbackComplaintNotes
+from .models import User, Unit, LeaseAgreement, Payment, Bill, Cms, AccessControl, FeedbackComplaintNotes, TenantRepresentatives
 
 #scheduler = BackgroundScheduler()
 
@@ -34,7 +35,7 @@ def create_app():
         create_database(app.config['SQLALCHEMY_DATABASE_URI'])
     
     # Register Resources
-    from .resources import UserResource, UnitResource, LeaseAgreementResource, PaymentResource, BillResource, CmsResource, AccessControlResource, FeedbackComplaintNotesResource
+    from .resources import UserResource, UnitResource, LeaseAgreementResource, PaymentResource, BillResource, CmsResource, AccessControlResource, FeedbackComplaintNotesResource, TenantRepresentativesResource
     api.add_resource(UserResource, '/user', '/user/<string:email_or_user_id>')
     api.add_resource(UnitResource, '/unit', '/unit/<int:unit_id>')
     api.add_resource(LeaseAgreementResource, '/lease', '/lease/<string:lease_id_or_tenant_id>')
@@ -43,7 +44,8 @@ def create_app():
     api.add_resource(CmsResource, '/cms', '/cms/<int:cms_id>')
     api.add_resource(AccessControlResource, '/accesscontrol')
     api.add_resource(FeedbackComplaintNotesResource, '/feedbackcomplaintnotes', '/feedbackcomplaintnotes/<int:cms_id>')
-    
+    api.add_resource(TenantRepresentativesResource, '/representatives', '/representatives/<int:tenant_id>')
+
     # Tasks
     from .tasks import check_cms_archive, generate_delinquency
     # Initialize the scheduler
@@ -67,5 +69,6 @@ def create_app():
     app.register_blueprint(ocr_bp)
     app.register_blueprint(delinquentBills_bp)
     app.register_blueprint(billing_performance_bp)
+    app.register_blueprint(owner_tenant_relation_bp)
     
     return app
