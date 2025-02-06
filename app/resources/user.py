@@ -14,7 +14,8 @@ class UserResource(Resource):
                 'email': tenant_user.email,
                 'mobile_number': tenant_user.mobile_number,
                 'user_type': tenant_user.user_type.name,
-                'is_validated': tenant_user.is_validated
+                'is_validated': tenant_user.is_validated,
+                'lessor_id': tenant_user.lessor_id
             }
         return None
         
@@ -35,7 +36,8 @@ class UserResource(Resource):
                     'mobile_number': user.mobile_number,
                     'user_type': user.user_type.name,
                     'is_active': user.is_active,
-                    'is_validated': user.is_validated
+                    'is_validated': user.is_validated,
+                    'lessor_id': user.lessor_id
                 }
 
                 # Adding relationships data
@@ -47,6 +49,7 @@ class UserResource(Resource):
                         'tower_number': unit.tower_number,
                         'floor_number': unit.floor_number,
                         'unit_number': unit.unit_number,
+                        'unit_type': unit.unit_type,
                         'sq_foot': unit.sq_foot,
                         'number_of_bedrooms': unit.number_of_bedrooms,
                         'number_of_bathrooms': unit.number_of_bathrooms,
@@ -113,6 +116,7 @@ class UserResource(Resource):
                         'date_to_end': cms.date_to_end.isoformat() if cms.date_to_end else None,
                         'archive': cms.archive,
                         'status': cms.status.name,
+                        'notify_to': cms.notify_to,
                         'notes': [{
                             'fc_id': note.fc_id,
                             'cms_id': note.cms_id,
@@ -135,7 +139,8 @@ class UserResource(Resource):
                     'mobile_number': user.mobile_number,
                     'user_type': user.user_type.name,
                     'is_active': user.is_active,
-                    'is_validated': user.is_validated
+                    'is_validated': user.is_validated,
+                    'lessor_id': user.lessor_id
                 }
 
                 # Adding relationships data
@@ -148,6 +153,7 @@ class UserResource(Resource):
                         'floor_number': unit.floor_number,
                         'unit_number': unit.unit_number,
                         'sq_foot': unit.sq_foot,
+                        'unit_type': unit.unit_type,
                         'number_of_bedrooms': unit.number_of_bedrooms,
                         'number_of_bathrooms': unit.number_of_bathrooms,
                         'parking_slot': unit.parking_slot,
@@ -210,6 +216,7 @@ class UserResource(Resource):
                         'date_to_end': cms.date_to_end.isoformat() if cms.date_to_end else None,
                         'archive': cms.archive,
                         'status': cms.status.name,
+                        'notify_to': cms.notify_to,
                         'notes': [{
                             'fc_id': note.fc_id,
                             'cms_id': note.cms_id,
@@ -267,6 +274,8 @@ class UserResource(Resource):
                     user.user_type = data['user_type']
                 if 'is_validated' in data: 
                     user.is_validated = data['is_validated']
+                if 'lessor_id' in data:
+                    user.lessor_id = data['lessor_id']
                 db.session.commit()
                 return {'message': 'User updated successfully'}
             else:
