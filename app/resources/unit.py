@@ -13,6 +13,7 @@ class UnitResource(Resource):
                     'tower_number': unit.tower_number,
                     'floor_number': unit.floor_number,
                     'unit_number': unit.unit_number,
+                    'unit_type': unit.unit_type,
                     'sq_foot': unit.sq_foot,
                     'number_of_bedrooms': unit.number_of_bedrooms,
                     'number_of_bathrooms': unit.number_of_bathrooms,
@@ -29,6 +30,7 @@ class UnitResource(Resource):
                 'tower_number': unit.tower_number,
                 'floor_number': unit.floor_number,
                 'unit_number': unit.unit_number,
+                'unit_type': unit.unit_type,
                 'sq_foot': unit.sq_foot,
                 'number_of_bedrooms': unit.number_of_bedrooms,
                 'number_of_bathrooms': unit.number_of_bathrooms,
@@ -74,6 +76,8 @@ class UnitResource(Resource):
                 unit.parking_slot = data['parking_slot']
             if data.get('remaining_balance'):
                 unit.remaining_balance = data['remaining_balance']
+            if data.get('unit_type'):
+                unit.unit_type = data['unit_type']
 
             db.session.commit()
             return {'message': 'Unit updated successfully'}
