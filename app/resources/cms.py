@@ -19,7 +19,8 @@ class CmsResource(Resource):
                     'date_to_post': cms.date_to_post.isoformat() if cms.date_to_post else None,
                     'date_to_end': cms.date_to_end.isoformat() if cms.date_to_end else None,
                     'archive': cms.archive,
-                    'status': cms.status.name
+                    'status': cms.status.name,
+                    'notify_to': cms.notify_to
                 }
                 
                 cms_data['notes'] = []
@@ -53,7 +54,8 @@ class CmsResource(Resource):
                 'date_to_post': cms.date_to_post.isoformat() if cms.date_to_post else None,
                 'date_to_end': cms.date_to_end.isoformat() if cms.date_to_end else None,
                 'archive': cms.archive,
-                'status': cms.status.name
+                'status': cms.status.name,
+                'notify_to': cms.notify_to
                 }
                 
                 cms_data['notes'] = []
@@ -114,6 +116,8 @@ class CmsResource(Resource):
                 cms.archive = data['archive']
             if 'status' in data:
                 cms.status = data['status']
+            if 'notify_to' in data:
+                cms.notify_to = data['notify_to']
                 
             if 'feedback' not in data:
                 cms.date_posted = datetime.now().date()
