@@ -25,7 +25,7 @@ fire==0.6.0
 Flask==3.0.1
 Flask-APScheduler==1.13.1
 flask-babel==4.0.0
-Flask-Cors==4.0.0
+Flask-Cors==4.0.2
 Flask-Migrate==4.0.5
 Flask-RESTful==0.3.10
 Flask-SQLAlchemy==3.1.1
